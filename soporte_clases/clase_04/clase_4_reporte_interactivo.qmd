@@ -1,0 +1,45 @@
+---
+title: "Reporte Carros Velocidad"
+format: html
+editor: visual
+---
+
+```{r}
+#| echo: false
+#| silent: true
+#| warning: false
+
+#OJO: se necesita tener instalados previamente los paquetes del script tarea de la Clase 04
+
+# Este es un ejemplo de un reporte interactivo. A diferencia del .qmd que vamos a trabajar para nombres de variables y tipos de estructuras de datos, en este caso la idea es que ejecuten el botón que está en la parte de la barra superior de RStudioque tiene una flecha azul apuntando hacia la derecha que dice "Render".
+# Al apretarlo empezará a ejecutar una serie de procesos que pueden tardar algunos segundos, o minutos si falta alguna dependencia. 
+# En caso de tener algún error, reportarlo por el mecanismo regular.
+
+library(ggplot2)
+library(plotly)
+library(DT)
+grafico <- ggplot(cars,
+                  mapping= aes(x=speed,y=dist))+
+  geom_point(colour = 'red', size = 3)+
+  geom_smooth(aes(x=speed,y=dist))
+
+
+```
+
+## Tabla Interactiva
+
+```{r}
+#| echo: false
+DT::datatable(cars)
+```
+
+## Gráfico Interactivo
+
+```{r}
+#| echo: false
+#| warning: false
+
+
+grafico%>%
+  ggplotly()
+```
