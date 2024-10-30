@@ -94,11 +94,9 @@ Ejemplos:
 
 ## Tipos de datos
 
-Cuando queremos saber con cuál tipo de datos estamos trabajando necesitamos usar la función class()
+Cuando queremos saber con cuál tipo de datos estamos trabajando necesitamos usar la función `class()` y `mode()`
 
-\`\`\`{r data_types, include=TRUE, echo=TRUE
-
-Las funciones son series de procedimientos estandarizados, que toman como imput determinados argumentos a fijar por el usuario, y devuelven un resultado acorde a la aplicación de dichos procedimientos. Su lógica de funcionamiento es:\
+Las funciones son series de procedimientos estandarizados, que toman como input determinados argumentos a fijar por el usuario, y devuelven un resultado acorde a la aplicación de dichos procedimientos. Su lógica de funcionamiento es:\
 `funcion(argumento1 = arg1, argumento2 = arg2)`
 
 ### Otros ejemplos de funciones:
