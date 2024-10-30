@@ -2,10 +2,6 @@
 title: "Clase 3- Apoyo"
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
-
 Este material fue compilado y adaptado por José M. Avendaño teniendo parcialmente códigos y conceptos desarrollados por [Diego Kozlowski y Juan Barriola](https://github.com/DiegoKoz/intro_ds) para un curso de R.
 
 ## R base
@@ -85,11 +81,11 @@ Ejemplos:
 3.  Función con múltiples argumentos
 
     ```{r}
-    
+
     # asignación variables
     velocidad <- cars$speed
     distancia <- cars$dist
-    
+
     # crear un gráfico de tipo scatter plot (diagrama de dispersión )
     plot(velocidad, distancia)
      
@@ -272,7 +268,7 @@ acabamos de ver coerción. Forzar a un cambio de un tipo de dato en otro tipo de
 
 ### vectores - character
 
--   **Datos de caracteres:** se usan para almacenar cadenas de caracteres como por ejemplo un nombre, una oración, o cualquier valor que el computador no deba entender como un objeto lógico, número entero, númerico, matriz, etc. El valor debe estar declarado entre comillas simples " o comilla sencilla '. Prestar atención a no usar la tipo tilde ´ o cualquiera diferente a las mencionadas
+-   **Datos de caracteres:** se usan para almacenar cadenas de caracteres como por ejemplo un nombre, una oración, o cualquier valor que el computador no deba entender como un objeto lógico, número entero, númerico, matriz, etc. El valor debe estar declarado entre állas simples " o comilla sencilla '. Prestar atención a no usar la tipo tilde ´ o cualquiera diferente a las mencionadas
 
 ```{r caracteres, include=TRUE, echo=TRUE}
 nombre <- 'jose miguel'
