@@ -5,3 +5,5 @@
 borradores/
 *html
 *_files/
+*Rproj
+*gitignore
