@@ -28,3 +28,6 @@ rsconnect
 leaflet
 leaflet.extras
 tinytex::install_tinytex()
+
+# cargar paquetes
+librari(tidyverse)
