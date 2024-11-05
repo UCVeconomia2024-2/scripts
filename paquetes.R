@@ -30,4 +30,4 @@ leaflet.extras
 tinytex::install_tinytex()
 
 # cargar paquetes
-librari(tidyverse)
+library(tidyverse)
