@@ -1,6 +1,6 @@
 ---
 title: "Ciencia de Datos para Economistas"
-subtitle: "Clase 8- Inspeccionar Data Frames/borrador"
+subtitle: "Clase 8- Inspeccionar Data Frames"
 date: "Noviembre 11, 2024"
 output:
   html_document:
@@ -40,6 +40,23 @@ Múltiples categorías
 table(mtcars$cyl, mtcars$vs)
 ```
 
+
+## Tabla Resumen Estadístico
+
+Representar los valores mínimo y máximo, primer y tercer cuartil, media, promedio de un vector o data frame.
+
+```{r}
+summary(mtcars$mpg)
+```
+
+## Tabla Resumen Estadístico - cont
+
+La salida de función `summary` cambia según el objeto que estemos trabajando
+
+```{r}
+summary(mtcars)
+```
+
 ## Operadores Lógicos
 
 -   $>$ (mayor a)
@@ -57,22 +74,6 @@ Vector seleccionado "millas por galón" `mpg`
 
 ```{r}
 mtcars$mpg
-```
-
-## Tabla Resumen Estadístico
-
-Representar los valores mínimo y máximo, primer y tercer cuartil, media, promedio de un vector o data frame.
-
-```{r}
-summary(mtcars$mpg)
-```
-
-## Tabla Resumen Estadístico - cont
-
-La salida de función `summary` cambia según el objeto que estemos trabajando
-
-```{r}
-summary(mtcars)
 ```
 
 ## Vector Lógico con valores que Cumplen una Condición
