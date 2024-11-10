@@ -30,4 +30,13 @@ leaflet.extras
 tinytex::install_tinytex()
 
 # cargar paquetes
-library(tidyverse)
+# library(tidyverse)
+
+
+#06-11
+gapminder
+jsonlite
+readr
+devtools
+usethis
+gitcreds

@@ -8,7 +8,6 @@
 # 2) Lectura y ejecución de chunks de guía asociada a la clase 5
 # 
 
-
 # 2) Ver video https://www.youtube.com/watch?v=WCDCOF47O_I&list=PLliutFhUtupKmtQ-P83-leQJOilGOEV60&index=2
 # y prestar atención y mucho entusiasmo a la exposición del Prof. Walter Sosa Escudero
 

@@ -3,9 +3,8 @@ title: "Ciencia de Datos para Economistas"
 subtitle: "Clase 6- Construir Funciones y Data Frames"
 #format: live-html
 date: "Noviembre 4, 2024"
-format: 
-  revealjs:
-    incremental: true   
+execute: 
+  echo: true
 ---
 
 ## Construir Funciones:
@@ -27,17 +26,18 @@ format:
 ```{r}
 # ejecutar código y gradualmente descomentar líneas
 posibles_salidas_dado <- c(1:6)
-# sample(posibles_salidas_dado, 1)
-# sample(posibles_salidas_dado, 2)
-# sample(posibles_salidas_dado, 3)
+sample(posibles_salidas_dado, 1)
+sample(posibles_salidas_dado, 2)
+sample(posibles_salidas_dado, 3)
 # sample(posibles_salidas_dado, 7) # genera error
-# sample(posibles_salidas_dado, 7, replace=TRUE)
+sample(posibles_salidas_dado, 7, replace=TRUE)
 
 ```
 
 ¡Juguemos!
 
 ```{r}
+#| echo: true
 
 # primera versión función
 
@@ -55,6 +55,7 @@ lanzamiento (cdad_dados=6)
 ### - ¿Entrada? =\> Argumentos
 
 ```{r}
+#| echo: true
 # función con dos argumentos
 lanzamiento <- function (cdad_dados,
                          nombre_jugador){
@@ -82,7 +83,7 @@ lanzamiento(nombre_jugador= 'Braian',
 # pero no lo estamos referenciando con el nombre del argumento en la 
 # función, que corresponde en la segunda posición al de nombre_jugador
 
-#lanzamiento( 'Braian',
+# lanzamiento( 'Braian',
 #             5)
 
 lanzamiento(2,'Jose')
@@ -114,6 +115,7 @@ datos [World Bank](https://data.worldbank.org/indicator/NY.GDP.MKTP.KD.ZG)
 character/ nombres países
 
 ```{r}
+#| echo: true
 nombre_paises <- c('togo','japon','irlanda')
 nombre_paises
 ```
@@ -121,6 +123,7 @@ nombre_paises
 numeric/ PIB año 2023
 
 ```{r}
+#| echo: true
 # vector para registrar variación PIB
 var_pib <- c (-1.7, 2.3, -3.1 ) # separador décimal es el punto! ojo
 # datos inventados, no obtenidos de la página
@@ -130,6 +133,7 @@ var_pib
 logical
 
 ```{r}
+#| echo: true
 ##########################################################
 crecimiento_presente <- var_pib >0
 crecimiento_presente
@@ -146,6 +150,7 @@ paises - var_pib - crecimiento_presente
 Lista con vectores del mismo `length()` . En la consola ejecutar para cada vector la función `length` de la siguiente forma `length(var_pib)` .
 
 ```{r}
+#| echo: true
 # usar la función de R que se llama data_frame
 df_pib_paises <- data.frame(pais= nombre_paises,
                             delta_PIB= var_pib,
@@ -164,6 +169,7 @@ df_pib_paises # mostrar la Data Frame Creada
 ## Consultar la clase del objeto creado:
 
 ```{r}
+#| echo: true
 class (df_pib_paises)
 
 ```
@@ -183,16 +189,19 @@ Se disponen de estos operadores para acceder a los elementos que conforman los v
 ## Ejemplos Accesos- Vectores
 
 ```{r}
+#| echo: true
 vector_demo <- seq(from= 5, to =35, by=3)
 vector_demo
 
 ```
 
 ```{r}
+#| echo: true
 vector_demo [3]
 ```
 
 ```{r}
+#| echo: true
 vector_demo [[3]]
 ```
 
@@ -203,6 +212,7 @@ Los dos métodos de acceso, mediante los operadores `[` y `[[` generan el mismo 
 En el libro "R para Principiantes" de Juan B. Mendoza , en el acceso <https://bookdown.org/jboscomendoza/r-principiantes4/listas.html> , pueden obtener información adicional sobre qué son las listas
 
 ```{r}
+#| echo: true
 month.name # el objeto month.name viene precargado en R
 letters # el objeto letters viene precargado en R
 lista_demo <- list(meses= month.name, letras= letters, numeros= 1:12)
@@ -213,7 +223,7 @@ lista_demo # verificamos contenido de la lista
 ### Métodos de acceso \[ \], \$ y \[\[ \]\]
 
 ```{r}
-
+#| echo: true
 lista_demo[1]
 # ir descomentando línea a línea para evaluar los resultados
 # lista_demo$meses 
@@ -225,6 +235,7 @@ lista_demo[1]
 Se hace una comparación de tipo lógico, entre la igualdad de cada uno de los elementos que arroja `lista_demo$meses` con los elementos que arroja `lista_demo[[1]]`
 
 ```{r}
+#| echo: true
 lista_demo$meses == lista_demo[[1]]
 
 ```
@@ -234,6 +245,7 @@ Se puede ver, uno a uno, que todos los elementos que arroja cada uno de los mét
 ## Ejemplos Accesos- Lista/
 
 ```{r}
+#| echo: true
 # ir descomentando línea a línea para evaluar los resultados
 lista_demo[[1]][3]
 #lista_demo$meses[3]
