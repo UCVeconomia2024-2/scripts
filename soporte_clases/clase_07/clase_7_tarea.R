@@ -24,3 +24,19 @@
 # ejecutados
 
 # Los entregables deben ser remitidos al correo electrónico oficial del curso
+
+# Aspectos generales sobre los entregables (tareas ) en formato qmd
+# Las primeras líneas del archivo qmd se les denomina yml y contienen una serie de 
+# parametros que deberá adaptar según el reporte que esté generando. Todos los reportes 
+# que genere en qmd deben contener las líneas señaladas abajo, excepto el subtitle que 
+# queda a elección. Verificar que contenga los tres signos de sustracción ```---```
+# al inicio y al final del yml
+
+# ---
+# title: "Nombre de la asignación"
+# subtitle: "subtítulo en caso de aplicar"
+# format: html
+# editor: visual
+# author: "su nombre"
+# date:  "Noviembre 11, 2024"
+# ---

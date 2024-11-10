@@ -20,3 +20,5 @@
 # conveniente
 
 # Fecha de entrega 20/11/2024 al correo electrónico oficial del curso
+
+# SUGERENCIA: colocar comentarios a todo el qmd de la clase 8
