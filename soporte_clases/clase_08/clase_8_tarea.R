@@ -31,6 +31,10 @@
 # Tener presente que son varias las viñetas de este paquete y por los 
 # momentos se revisará esta.
 
+# 7) Complementario a lectura recomendada en 6, está el libro
+# https://rsanchezs.gitbooks.io/rprogramming/content/chapter9/index.html
+# del autor Rubén Sánchez Sancho
+
 # Fecha de entrega 20/11/2024 al correo electrónico oficial del curso. La actividad 6 es 
 # sugerida y no obligatoria, no obstante, es una lectura muy recomdable ya que el paquete
 # es de uso diario y un estándar en la manipulación de datos en R.
