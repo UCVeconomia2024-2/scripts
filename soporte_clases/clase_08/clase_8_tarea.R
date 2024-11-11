@@ -24,6 +24,7 @@
 # conveniente
 
 # 5) Crear 4 DF's derivadas de Gapminder que contengan datos de interés para ser analizados
+# explicar muy brevemente la razón y/o utilidad de tal selección.
 
 # 6) Revisar Vignette de DPLYR disponible en 
 # https://cran.r-project.org/web/packages/dplyr/vignettes/dplyr.html
