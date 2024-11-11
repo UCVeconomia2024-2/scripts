@@ -94,16 +94,10 @@ mtcars[2,3]
 
 ```
 
-## 2da Parte/ Ayudas
+## 2da Parte/ Ayudas ¿Para qué necesitamos ayuda? Opciones:
 
-::::: columns
+:::: columns
 ::: {.column width="50%"}
-![](images/stackoverflow2.jpg){width="400"}
-:::
-
-::: {.column width="50%"}
-¿Para qué necesitamos ayuda? Opciones:
-
 -   Manual del Paquete
 
 -   Vignettes
@@ -112,7 +106,7 @@ mtcars[2,3]
 
 -   Otras (LLM´s, googlear, stackoverflow, foros, etc)
 :::
-:::::
+::::
 
 ## Documentación Paquetes
 
@@ -122,7 +116,7 @@ Hay paquetes que tienen flujos de trabajo donde se require usar diversas funcion
 
 👎 La lectura alfabética de las funciones no resulta práctica, sino sólo referencial.
 
-## Obtención Documetación Paquete
+## Obtención Documentación Paquete
 
 -   Vía Cran
 
@@ -157,7 +151,3 @@ Las **cheat sheets** (hojas rápidas o hojas de trucos) son documentos en format
 Estas hojas proporcionan una visión rápida y un resumen conciso de los comandos, funciones de un paquete.
 
 Enlace <https://posit.co/resources/cheatsheets/?type=translations/>
-
-## Ejemplo Paquete readr
-
-![](images/clase_7/cheat.png)
