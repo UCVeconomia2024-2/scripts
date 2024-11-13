@@ -188,7 +188,7 @@ Número de columnas
 ncol(df_ahorro)
 ```
 
--   Número de filas
+Número de filas
 
 ```{r}
 nrow(df_ahorro)
@@ -232,12 +232,19 @@ Asignar nueva columa a la DF
 df_ahorro$pais <- rownames(df_ahorro)
 ```
 
-## Inspección nuevo atributo
+## Crear Columna con Valor Promedio
+Con los valores correspondientes a pop15 y pop75 obtener promedio por cada observación
+
+```{webr}
+df_ahorro$edad_promedio <- mean(df_ahorro$pop15, df_ahorro$pop75)
+```
+
+## Inspección Nuevos Atributos
 
 Revisar DF
 
-```{r}
-head(df_ahorro, 3)
+```{webr-r}
+head(df_ahorro, 5)
 ```
 
 ## Funciones Valores Extremos
