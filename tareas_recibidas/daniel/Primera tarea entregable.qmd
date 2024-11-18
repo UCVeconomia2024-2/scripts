@@ -1,0 +1,88 @@
+---
+title: "Tarea Clase 7"
+format: html
+editor: visual
+author: "Daniel Enrique Conde Chiquito"
+date: "Noviembre 18, 2024"
+---
+
+# Primer entregable
+
+## Nombraremos nuestra función
+
+```{r}
+calculo_inflacion <- function(precios_anterior, precios_actual){
+   # Se calcula la inflacion para cada articulo 
+  inflacion <- ((precios_actual / precios_anterior) - 1) * 100
+
+# Retornamos el valor 
+  return(inflacion) 
+} 
+# Bien!
+```
+
+## Ahora, podemos llamar a nuestra función con dos valores
+
+```{r}
+calculo_inflacion(60,61.60)
+calculo_inflacion(445, 440)
+
+# Bien!
+```
+
+## Hagamos lo mismo con otra función para el PIB per cápita
+
+```{r}
+calcular_pib_per_capita <- function(pib_total, poblacion) { 
+#Calculamos el PIB per cápita 
+  pib_per_capita <- pib_total / poblacion
+
+return(pib_per_capita) 
+}
+# Bien!
+```
+
+## A los argumentos le daremos valores
+
+```{r}
+pib_total <- 656787686 # PIB total en millones de dólares 
+poblacion <- 457657 # Población en millones
+
+pib_per_capita_resultado <- calcular_pib_per_capita(pib_total, poblacion) 
+print(pib_per_capita_resultado) # Imprimir el resultado
+
+
+# Bien!
+```
+
+# Segundo entregable
+
+## Vamos a crear una función que tome de entrada 2 argumentos relacionados a materia económica
+
+### Para ello, usaremos una función elemental en materia economica bastante sencilla.
+
+### Esta es la función de beneficio
+
+```{r}
+beneficio <- function(ingreso_total, costo_total) {
+  
+  beneficio <- ingreso_total - costo_total
+  
+  return(beneficio)
+}
+```
+
+### Ahora le damos valores a los argumentos
+
+```{r}
+ingreso_total <- 10000
+costo_total <- 8000
+# está bien lo que hiciste al asignar los valores a de pib_total y población a variables, para luego llamar a a la función y pasar los argumentos con los valores de las variables
+
+
+beneficio_obtenido <- beneficio(ingreso_total, costo_total)
+
+print(paste("El beneficio obtenido es de:", beneficio_obtenido))
+
+# Está muy bien que incorpores el paste y así vamos juntando varios pedazos para crear una salida final
+```
