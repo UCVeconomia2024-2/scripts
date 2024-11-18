@@ -1,0 +1,47 @@
+---
+tittle: "Segunda Tarea"
+format: html
+editor: visual
+author: "Isaias De Ascencao"
+date: "Noviembre 17, 2024"
+---
+
+```{r}
+
+#Segunda Practica 
+#Como establecer una funcion 
+#Tanto para la pimera como para la 
+#segunda actividad se corrigen los 
+#errores en las funciones establecidas. 
+#La primera funcion es de la inflacion y la segunda del 
+#PIB per capita. Ademas, se le da un par de funciones 
+#con distintos valores en cada actividad.
+
+#Primera actividad
+
+calculo_inflacion<-function(precios_anterior, precios_actual){ inflacion<-((precios_actual/precios_anterior)-1)*100 
+return(inflacion) } 
+calculo_inflacion(10,14) 
+calculo_inflacion(12,9)
+```
+
+```{r}
+
+#Segunda actividad
+
+calculo_pib_per_capita<-function(pib_total, poblacion){ 
+  pib_per_capita<-(pib_total/poblacion) 
+  return(pib_per_capita) } 
+pib_total<-123000043 
+poblacion<-24531 
+calculo_pib_per_capita(pib_total, poblacion) 
+resultado<-calculo_pib_per_capita(pib_total, poblacion) 
+print(resultado)
+
+pib_total<-173839422 
+poblacion<-2344 
+calculo_pib_per_capita(pib_total, poblacion) 
+resultado2<-calculo_pib_per_capita(pib_total, poblacion) 
+print(resultado)
+
+```

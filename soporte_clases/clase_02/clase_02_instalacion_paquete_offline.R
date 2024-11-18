@@ -12,3 +12,4 @@ pkgFilenames <- read.csv("'winbinarios/pkgFilenames.csv", stringsAsFactors = FAL
 # instalar distintos paquetes
 install.packages(pkgFilenames, repos = NULL, type = "win.binary")
 
+<- 

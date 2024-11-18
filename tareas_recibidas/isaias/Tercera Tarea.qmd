@@ -1,0 +1,53 @@
+---
+tittle: "Tercera Tarea"
+subtittle: "Uso de funciones de Interes y cobb-douglas"
+format: html
+output: html_document
+editor: visual
+author: "Isaias De Ascencao"
+date: "Noviembre 17, 2024"
+---
+
+```{r}
+#Tercera Practica 
+#funcion con 3 argumentos (1.1)
+
+#Se le da el nombre a la funcion con las varibles(argumentos) #tiempo, tasa de interes y capital para determinar los #intereses obtenidos en la operacion financiera. Ademas se #establece la forma funcional de dicha operacion.
+
+calculo_intereses<-function(tiempo, tasa_de_interes,capital){ 
+  intereses<-((tiempo*tasa_de_interes*capital)-capital) 
+return(intereses)} 
+
+#Procedemos a establecer o proporcionarle valores a las 
+#variables que establecimos como argumentos inicialmente. 
+tiempo<-5 
+tasa_de_interes<-0.3 
+capital<-20000 
+
+#Declaramos el nombre de la funcion junto con los argumentos, 
+#ademas declaramos otra variable como resultado de ejecutar 
+#la funcion. Por ultimo usamos el comando print para imprimir el resultado. 
+calculo_intereses(tiempo,tasa_de_interes,capital) 
+resultado<-calculo_intereses(tiempo,tasa_de_interes,capital) 
+print<-resultado
+
+```
+
+```{r}
+#funcion con 3 argumentos (1.2)
+
+#Se le proporciona el nombre a la funcion cuyos 
+#argumentos son l(trabajo), k(capital) y alpha(coeficiente 
+#de elasticidad). Ademas se expresa con unos corchetes 
+#la forma funcional de la fp cobb douglas.
+
+calculo_produccion_empresa<-function(l,k,alpha){ 
+  produccion_cobb_douglas<-((l^alpha)*(k^(1-alpha))) 
+  return(produccion_cobb_douglas)} 
+
+#En este apartado se establece y ejecuta la funcion 
+#con los valores respectivos de cada uno de los 
+#argumentos establecidos inicialmente 
+
+calculo_produccion_empresa(20,24,0.4)
+```

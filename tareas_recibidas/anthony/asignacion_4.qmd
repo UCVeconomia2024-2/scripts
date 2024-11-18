@@ -1,0 +1,23 @@
+---
+title: "asignación_4"
+author: "Anthony Prado"
+format: html
+editor: visual
+date: "Noviembre 17, 2024"
+---
+
+```{r}
+#El calculo del INPC real nos permite realizar un analisis correcto de la variacion del indice de precios
+
+inpc_real <- function(inpc_nominal, inpc_year_base) {
+  #en donde el inpc_nomina = al inpc del año 
+  #y inpec_year_base = sera el año base que nos permitira obtener el INPC real
+  
+  calculo_inpc_real <- inpc_nominal / inpc_year_base
+  return(calculo_inpc_real)
+}
+
+print(inpc_real(350789, 300000))
+
+# Bien!
+```

@@ -1,0 +1,70 @@
+---
+title: "Practica_1"
+author: "Anthony Prado"
+format: html
+editor: visual
+---
+
+```{r}
+
+#Correccion de ejercicios
+
+numeros_pares <- c(2, 4, 6, 8, 10)
+mis_frutas <- c("manzana", "banana", 'uva')
+mayor_que_cinco <- c(6, 8, 10) 
+
+numeros_pares
+mis_frutas
+mayor_que_cinco
+
+```
+
+```{r}
+#Ejercicio numero 1
+
+numero_par <- c(2, 4, 6, 8, 10)
+numero_impar <- c(1, 3, 5, 7, 9)
+
+print(numero_par)
+print(numero_impar)
+
+# también pudiésemos crear estos vectores con la función seq
+seq(from=2, to= 10, by=2)
+seq(from=1, to=10, by=2)
+
+```
+
+```{r}
+#Ejercicio numero 2
+
+nombre_universidad <- c('Facultad de ciencias economicas y sociales', 'FACES', 'Escuela de Economia')
+primeros_tres_meses <- c('enero', 'febrero', 'marzo')
+
+print(nombre_universidad)
+print(primeros_tres_meses)
+
+```
+
+```{r}
+#ejercicio numero 3
+numeros <- 1:5 
+mayor_que_tres <- numeros > 3
+banana <- c('b', 'a', 'n', 'a', 'n', 'a')
+es_a <- banana == 'a'
+
+print(es_a)
+print(mayor_que_tres)
+ # bien!
+
+```
+
+```{r}
+fechas <- c("2024-09-30", "2024-10-31", "2024-12-31")
+
+fechas <- as.Date(fechas)
+
+# es conveniente que hagas el llamado a la variable del vector creado para verificar el formato. Más adelante verás que trabajar con fechas tiene sus particularidades. Igualmente está correcto el ejercicio
+
+fechas
+
+```

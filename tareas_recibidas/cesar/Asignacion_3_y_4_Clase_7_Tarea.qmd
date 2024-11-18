@@ -1,0 +1,96 @@
+---
+title: "Asignacion 3 y 4 de Tarea Clase 7"
+author: "Cesar Rodriguez"
+format: html
+editor: visual
+Date: "2024-11-17"
+---
+
+# Asignacion 3
+
+## Practica 2 Clase 6
+
+```{r}
+## Nombre de la función 
+calculo_inflacion <- function(precios_anterior, precios_actual){ 
+  
+# Calculamos la inflación para cada artículo
+inflacion <- ((precios_actual / precios_anterior) - 1) * 100
+  
+# Retornamos el valor
+  return(inflacion)
+}
+```
+
+#### Chunk 2 para ejecutar la funcion
+
+```{r}
+# Ejemplo de uso
+
+calculo_inflacion(10, 14) 
+calculo_inflacion(12, 9)
+
+# Bien!
+```
+
+#### Tener en cuenta que se puede llamar a la funcion destacando de la forma anterior a los argumentos, o tambien se puede hacer de la siguiente manera:
+
+```{r}
+calculo_inflacion(precios_anterior =10, 
+                  precios_actual =14)
+#o dado con el nombre sin tomar en cuenta la posicion
+calculo_inflacion(precios_actual =20, 
+                  precios_anterior = 21)
+
+# Bien!
+```
+
+### Ejercicio 2 de la practica:
+
+```{r}
+calcular_pib_per_capita <- function(pib_total, poblacion){
+# Calculamos el PIB per cápita
+pib_per_capita <- (pib_total / poblacion)
+
+#para retornar el valor
+return(pib_per_capita)
+}
+# Bien!
+```
+
+#### Chunck 2 para retornar el valor
+
+```{r}
+calcular_pib_per_capita(123000043, 24531)
+# Bien!
+```
+
+#### **NOTA**: Separo los pasos de los ejercicios en 2 chuncks para que se vea ordenado, pero en la practica se hace en un mismo chunck de codigo. 
+
+No hay problema. Me parece mejor como lo indicas: en los códigos la legibilidad es importante porque cuando son muchas las funciones, las variables, etc, que todo se encuentre en orden y sea legible, termina ayudando mucho a ahorrar tiempo
+
+# Asignacion 4
+
+## Creacion de Funcion con 3 argumentos para calculo economico
+
+```{r}
+#El Calculo del consumo de un individuo permite conocer cuanto se gasta del ingreso,
+#disponible para cubrir las necesidades basicas de un individuo o grupo de individuos
+
+consumo <- function(consumo_autonomo, pmc, ingreso_disponible) {
+  #Donde el consumo autonomo es aquel que se realiza independientemente del nivel de,
+  #ingreso; La pmc es la propension marginal al consumo, valor que esta entre 0 y 1 e 
+  #indica cuanto se destina del ingreso disponible para consumo y cuanto se ahorra;
+  #Y el ingreso disponible que indica cuanto dinero le queda a un individuo luego 
+  #de pagar impuestos y otros gastos
+calculo_consumo <- consumo_autonomo + pmc * ingreso_disponible
+return(calculo_consumo)
+}
+print(consumo(300, 0.55, 1200))
+#De forma que con este ejemplo sobre esta ecuacion podemos entender que un individuo
+#que gana 1200 unidades monetarias, gasta de cualquier manera 300 de estas, 
+#y destina un 55% de su ingreso para su consumo, mientas que el resto es ahorrado.
+
+
+# Bien!! esa es la idea. Justamente, es importante que coloques, como lo hiciste, la decripción de lo que hace la  función mediante comentario, así como lo que representa cada uno de los argumentos. Luego les daré algunas recomenciones sobre como pueden usar los formatos estándar para hacer los comentarios
+```

@@ -1,0 +1,68 @@
+---
+  tittle: "Primera Tarea"
+format: html
+editor: visual
+author: "Isaias De Ascencao"
+date: "Noviembre 17, 2024"
+---
+
+```{r}
+#Primera practica
+
+library(dplyr)
+library(stringr)
+
+#Vectores solicitados en la activvidad
+dias_de_la_semana<-c( "lunes", "martes", "miercoles", "jueves", "viernes", "sabado", "domingo") #Vector de caracter
+promedio_de_cada_semestre<-c(17.5,18.5,18,16,15,13) #Vector numerico
+universitario<-c(TRUE, TRUE, FALSE, TRUE) #Vector logico
+fechas_importantes<-c('10-01-2003', "3-3-2005", "5-11-1980", '21-11-1984') #Vector de fechas
+#Ahora usamos la funcion para imprimir cada uno de los vectores en pantalla
+print(dias_de_la_semana)
+print(promedio_de_cada_semestre)
+print(universitario) 
+print(fechas_importantes)
+
+#Ahora queremos deshacer un comentario
+#Y tenemos el siguiente
+#loteria\<-c(10,20,93,94,53,75,294)
+#Lo que hacemos es eliminar el numeral
+loteria<-c(10,20,93,94,53,75,294)
+
+
+# Bien!
+```
+
+```{r}
+#Ejercicios de practica
+#Vectores numericos
+pares_entre_0_al_10<-c(2,4,6,8,10)
+impares_entre_0_y_10<-c(1,3,5,7,9)
+# también pudiésemos crear estos vectores con la función seq
+seq(from=2, to= 10, by=2)
+seq(from=1, to=10, by=2)
+
+#Vectores de caracteres
+nombres_relevantes<-c('Universidad Central de Venezuela', "Facultad de ciencias economicas y sociales", "Escuela de Economia", "R aplicado a ciencia de datos para economistas")
+primer_trimestre_del_year<-c("enero","febrero","marzo")
+#Vector logico
+cada_numero_del_1_al_5_es_mayor_a_3<-c(FALSE,FALSE,FALSE,TRUE,TRUE)
+# también pudieramos hacer esto operando con vectores lógicos
+(1:5)>3
+
+banana_tiene_solo_la_letra_a<-c(FALSE,TRUE,FALSE,TRUE,FALSE,TRUE)
+c('b','a','n','a','n','a')=='a'
+
+
+
+#Vector de fechas
+fechas_preferidas<-c("10-01","28-01","14-02","24-02","3-03",
+                     "23-03","14-04","26-04")
+# Luego veremos varios aspectos sobre trabajar con fechas. Igualmente, es necesario colocar el año al definir las fechas.
+
+
+
+# es recomendable, no obligatorio, que separes en varios chunks el ejercicio para así poder ver de forma separada, por bloques, cada una de las propuestas.
+
+
+```
