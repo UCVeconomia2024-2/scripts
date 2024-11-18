@@ -31,6 +31,7 @@ calculo_intereses(tiempo,tasa_de_interes,capital)
 resultado<-calculo_intereses(tiempo,tasa_de_interes,capital) 
 print<-resultado
 
+# Perfecto!! bien!
 ```
 
 ```{r}
@@ -50,4 +51,5 @@ calculo_produccion_empresa<-function(l,k,alpha){
 #argumentos establecidos inicialmente 
 
 calculo_produccion_empresa(20,24,0.4)
+# Perfecto!! bien!
 ```

@@ -65,7 +65,7 @@ calcular_pib_per_capita(123000043, 24531)
 # Bien!
 ```
 
-#### **NOTA**: Separo los pasos de los ejercicios en 2 chuncks para que se vea ordenado, pero en la practica se hace en un mismo chunck de codigo. 
+#### **NOTA**: Separo los pasos de los ejercicios en 2 chuncks para que se vea ordenado, pero en la practica se hace en un mismo chunck de codigo.
 
 No hay problema. Me parece mejor como lo indicas: en los códigos la legibilidad es importante porque cuando son muchas las funciones, las variables, etc, que todo se encuentre en orden y sea legible, termina ayudando mucho a ahorrar tiempo
 

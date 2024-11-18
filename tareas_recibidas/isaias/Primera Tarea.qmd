@@ -1,5 +1,5 @@
 ---
-  tittle: "Primera Tarea"
+tittle: "Primera Tarea"
 format: html
 editor: visual
 author: "Isaias De Ascencao"
@@ -63,6 +63,8 @@ fechas_preferidas<-c("10-01","28-01","14-02","24-02","3-03",
 
 
 # es recomendable, no obligatorio, que separes en varios chunks el ejercicio para así poder ver de forma separada, por bloques, cada una de las propuestas.
+
+# Apartando lo del año en las fechas, los ejercicios están bien hechos
 
 
 ```

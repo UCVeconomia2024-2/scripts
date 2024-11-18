@@ -23,6 +23,9 @@ calculo_inflacion<-function(precios_anterior, precios_actual){ inflacion<-((prec
 return(inflacion) } 
 calculo_inflacion(10,14) 
 calculo_inflacion(12,9)
+
+# es importante mantener los formatos de sintáxis, por ejemplo, luego de la apertura de llave {
+# el código debe seguir en la línea de abajo. Revisa el ejemplo que está en la guía para que veas a lo que me refiero. R, en particular es un tanto relajado con esos aspectos. Hay lenguajes que sino pones la cantidad de espacios necesarios al inicio de línea, lo que se llama indentado, no te dejan correr el código. No obstante, por legibilidad del código, es mejor cumplir con los formatos que te menciono. Igualmente, el ejercicio está correcto y más adelante en clase hablaremos mejor sobre lo que te estoy indicando.
 ```
 
 ```{r}
@@ -37,6 +40,7 @@ poblacion<-24531
 calculo_pib_per_capita(pib_total, poblacion) 
 resultado<-calculo_pib_per_capita(pib_total, poblacion) 
 print(resultado)
+# está bien lo que hiciste al asignar los valores a de pib_total y población a variables, para luego llamar a a la función y pasar los argumentos con los valores de las variables
 
 pib_total<-173839422 
 poblacion<-2344 
@@ -44,4 +48,5 @@ calculo_pib_per_capita(pib_total, poblacion)
 resultado2<-calculo_pib_per_capita(pib_total, poblacion) 
 print(resultado)
 
+# Bien!
 ```
