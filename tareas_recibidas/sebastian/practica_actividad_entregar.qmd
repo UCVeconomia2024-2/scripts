@@ -1,0 +1,72 @@
+---
+title: "practica2"
+author: "sebastian"
+format: html
+editor: visual
+---
+
+## Ejercicio de Funciones
+
+Despues de las correciones con los {} y cerrar el return
+
+```{r}
+calculo_inflacion <- function(precios_anterior, precios_actual) {
+  # Realizamos la suma de los dos números
+  inflacion <- (( precios_anterior/ precios_actual) - 1) * 100
+  return(inflacion)
+  
+  }
+```
+
+### ejemplos
+
+```{r}
+#ejemplo 1 del uso del codigo
+
+calculo_inflacion(5,10)
+```
+
+```{r}
+#ejemplo 2 del uso del codigo
+calculo_inflacion(10,5)
+```
+
+### ejemplos con nombres en el argumento
+
+```{r}
+calculo_inflacion(precios_anterior =25, 
+                  precios_actual=55)
+```
+
+```{r}
+calculo_inflacion(precios_actual =55, 
+                  precios_anterior= 25)
+```
+
+## Parte 2
+
+Despues de hacer las modificaciones en poblacion y pib per capita faltante
+
+calcular_pib_per_capita \<- function(pib_total,) { \# Calculamos el PIB per cápita pib_per_capita \<- / poblacion
+
+return(pib_per_capita) }
+
+```{r}
+calcular_pib_per_capita <- function(pib_total,poblacion) {
+  # Calculamos el PIB per cápita
+  pib_per_capita <- pib_total     / poblacion
+  
+  return(pib_per_capita)
+}
+```
+
+### ejemplos
+
+```{r}
+pib_total <- 123000043  # PIB total en millones de dólares
+poblacion <- 24531 # Población en millones
+
+pib_per_capita_resultado <- calcular_pib_per_capita(pib_total, poblacion)
+
+print(pib_per_capita_resultado)
+```

@@ -1,0 +1,53 @@
+---
+title: "mi_primer_proyecto"
+author: "sebastian"
+format: html
+editor: visual
+---
+
+## Ejercicios para corregir
+
+una vez que se completan los datos faltantes
+
+```{r}
+# descomentar línea de abajo (quitar numeral)
+numeros_pares <- c(2, 4, 6, 8, 10)
+```
+
+```{r}
+# descomentar línea de abajo (quitar numeral)
+ mis_frutas <- c("manzana", "banana", "uva")
+```
+
+```{r}
+mayor_que_cinco <- c(6,8,10)
+```
+
+## ejercicios para realizar en el aula
+
+```{r}
+par <- c(2,4,6,8,10)
+impar <- c(1,3,5,7,9)
+```
+
+```{r}
+facultad_universidad <- c("ciencias economicas y sociales","universidad central de venezuela")
+```
+
+```{r}
+tres_primeros_meses <- c("enero", "febrero","marzo")
+```
+
+```{r}
+numeros_del_1al5 <- c(1:5)
+numeros_del_1al5 > 3
+```
+
+```{r}
+palabra_banana <- c("banana")
+palabra_banana=="a"
+```
+
+```{r}
+primerdia_ultimodia <- c("01-11-24","30-11-24","01-12-2024","31-12-24","01-01-2025","31-01-2025")
+```

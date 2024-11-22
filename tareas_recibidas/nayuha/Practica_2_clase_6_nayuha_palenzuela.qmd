@@ -1,0 +1,84 @@
+---
+title: "Practica_2_de_clase_6"
+author: "nayuha_palenzuela"
+format: html
+editor: visual
+---
+
+## Ejercicios Funciones
+
+### 1) Arreglo de las funciones para ejecución del chunk
+
+```{r}
+## función 
+calculo_inflacion <- function(precios_anterior, precios_actual) {
+  
+  # Calculamos la inflación para cada artículo
+  inflacion <- ((precios_actual / precios_anterior) - 1) * 100
+  
+  # Retornamos el valor
+  return(inflacion)
+}
+
+
+# faltaba {} para poder ejecutar el código y también cerrar los paréntisis 
+# de retrun
+
+```
+
+```{r}
+# Ejemplo de uso
+# Si la función definida en el chunk anterior no se completó correctamente no se podrá ejecutar ninguno de los chunks siguientes
+calculo_inflacion(10, 14) 
+calculo_inflacion(12, 9)
+```
+
+```{r}
+calculo_inflacion(10, 14)
+
+# aquí faltaba la coma para separar el argumento 
+
+```
+
+```{r}
+calculo_inflacion(precios_anterior = 10, 
+                  precios_actual = 14)
+
+# aquí podemos usar el = en ambos argumentos 
+```
+
+```{r}
+calculo_inflacion(precios_actual = 20, 
+                  precios_anterior= 21)
+
+# faltaba cerrar el parentesis
+
+```
+
+### 2) Completar los elmentos faltantes para realizar la definición de una función que permite realizar el cálculo del PIB percápita dado el PIB y el total de habitantes de un país.
+
+```{r}
+calcular_pib_per_capita <- function(pib_total, poblacion) {
+  # Calculamos el PIB per cápita
+  pib_per_capita <- (pib_total / poblacion)
+  
+  return(pib_per_capita)
+}
+ 
+
+# faltaban datos y cerrar parentesis 
+
+```
+
+\
+
+```{r}
+# Ejemplo de uso
+pib_total <- 123000043  # PIB total en millones de dólares
+poblacion <- 24531    # Población en millones
+
+pib_per_capita_resultado <- calcular_pib_per_capita(pib_total, poblacion)
+
+
+print(pib_per_capita_resultado)  # Imprimir el resultado
+```

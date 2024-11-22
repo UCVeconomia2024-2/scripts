@@ -1,0 +1,27 @@
+---
+title: "tarea_7_creacion_de_funciones"
+author: "nayuha_palenzuela"
+format: html
+editor: visual
+---
+
+## Creación de una función con argumentos
+
+```{r}
+
+calculo_valor_futuro <- function(pv, r, t)  
+{vf <- pv*(1+r)^t  
+  return(vf)
+}
+# pv = valor presente 
+# r = tasa de interés 
+# t = número de períodos
+
+calculo_valor_futuro(1000, 0.05, 5)
+
+
+calculo_valor_futuro(500, 0.16, 2)
+
+
+calculo_valor_futuro(2000, 0.1, 3)
+```

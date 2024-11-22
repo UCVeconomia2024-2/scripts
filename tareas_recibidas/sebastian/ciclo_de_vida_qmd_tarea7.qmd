@@ -1,0 +1,30 @@
+---
+title: "funcion_economica"
+author: "sebastian"
+format: html
+editor: visual
+---
+
+## Funcion Economica Actividad
+
+calcularemos el ciclo de vida de una persona y lo que el individuo consume anualmente y por lo cual debe ahoorar para saber cuanto debe tener al momento de estar retirado y solo le queda el desahorro hasta su muerte
+
+```{r}
+#primero se determina la funcion que tiene 3 argumentos
+
+calculo_ciclo_de_vida <- function(vida_laboral, year_de_vida,ingreso_anual)
+
+#realizamos la operacion 
+{
+  ciclo_de_vida <-(vida_laboral/year_de_vida)*ingreso_anual
+
+return(ciclo_de_vida)
+       }
+
+#llamamos a la funcion
+
+calculo_ciclo_de_vida(vida_laboral=45,
+              year_de_vida=60,
+              ingreso_anual=30000)
+
+```
