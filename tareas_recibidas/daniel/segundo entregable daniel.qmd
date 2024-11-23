@@ -1,0 +1,103 @@
+---
+title: "Tarea 8 20nov"
+format: html
+editor: visual
+author: "Daniel Enrique Conde Chiquito"
+date: "Noviembre 20, 2024"
+---
+
+# Segundo entregable: Dataframe Gapminder (df_gapminder)
+
+## Vector con países que están en el primer cuartil de la DF según el PIB
+
+```{r}
+#Cargamos todas las librerias a usar y llamamos la ruta para que detecte el archivo
+library(readxl)
+library(dplyr)
+library(stringr)
+library(tidyverse)
+ruta <- 'data_in/gapminder.xlsx'
+df_gapminder <- read_excel(ruta)
+
+#Luego de ello vamos a crear una nueva columna llamada GDP 
+
+df_gapminder$GDP <- df_gapminder$pop * df_gapminder$gdpPercap
+
+#Ahora con los datos de GDP podemos hacer el primer cuartil
+
+primer_quartil_paises <- df_gapminder %>%
+  mutate(GDP = pop * gdpPercap) %>%
+  group_by(country) %>%
+  summarize(primer_cuartil_GDP = quantile(GDP, probs = 0.25))
+view(primer_quartil_paises) 
+
+#El comando view nos va a ayudar a visualizar la sección que creamos
+```
+
+## Promedio del PIB per capita para todos los periodos disponibles (Argentina)
+
+```{r}
+#Vamos a filtrar los datos para Argentina 
+pibcapita_argentina <- df_gapminder %>%
+  filter(country=="Argentina")
+
+#El promedio de PIB per capita para Argentina lo vamos a calcular con la siguiente linea de codigo
+promedio_pib_argentina <- mean(argentina$gdpPercap)
+print(promedio_pib_argentina)
+```
+
+## Construir una lista que contenga los elementos: nombre paises, pib promedio de todos los paises por continente
+
+```{r}
+#Con las siguientes lineas de codigo vamos a agrupar los paises por paises y continente segun el 
+paises_promedio_pib <- df_gapminder %>%
+  group_by(country, continent) %>%
+  summarize(promedio_pib = mean(gdpPercap))
+
+# Creamos una lista con los resultados
+lista_paises_pib <- split(paises_promedio_pib, paises_promedio_pib$continent)
+
+lista_paises_pib
+```
+
+## Gráfica de PIB per capita de Venezuela en todos los periodos disponibles con R base
+
+```{r}
+venezuela <- df_gapminder[df_gapminder$country == "Venezuela", ]
+graphic_venezuela <- plot(venezuela$year, venezuela$gdpPercap,
+                          type = "b",
+                          col = "blue",
+                          pch = 16,
+                          xlab = "Año",
+                          ylab = "PIB per capita",
+                          main = "PIB per capita de Venezuela(1952-2007)")
+```
+
+## 4 Dataframes derivadas de Gapminder con datos de interés (Descomentar Print para mostrar)
+
+```{r}
+#Países con alto PIB per cápita (top 25%)
+paises_altos_ingresos <- df_gapminder %>%
+  group_by(year) %>%
+  filter(gdpPercap >= quantile(gdpPercap, 0.75))
+
+#Países con mayor esperanza de vida (top 25%)
+paises_mayor_esperanza_vida <- df_gapminder %>%
+  group_by(year) %>%
+  filter(lifeExp >= quantile(lifeExp, 0.75))
+
+#Países con menor esperanza de vida (top 25%)
+paises_menor_esperanza_vida <- df_gapminder %>%
+  group_by(year) %>%
+  filter(lifeExp >= quantile(lifeExp, 0.25))
+
+#Promedio del PIB per cápita por continente
+pib_promedio_por_continente <- df_gapminder %>%
+  group_by(continent, year) %>%
+  summarize(pib_promedio = mean(gdpPercap))
+
+#print(paises_altos_ingresos)
+#print(paises_mayor_esperanza_vida)
+#print(paises_menor_esperanza_vida)
+#print(pib_promedio_por_continente)
+```

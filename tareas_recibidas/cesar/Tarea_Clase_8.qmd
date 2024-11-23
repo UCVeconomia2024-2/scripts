@@ -1,0 +1,137 @@
+---
+title: "Tarea Clase 8"
+author: "Cesar Rodriguez"
+format: html
+editor: visual
+Date: "2024-11-20"
+---
+
+## Cargar la DF Gapminder
+
+```{r}
+library(readxl)
+library(dplyr)
+library(stringr)
+library(tidyverse)
+library(gapminder)
+ruta <- 'data_in/gapminder.xlsx'
+df_gapminder <- read_excel(ruta)
+View(df_gapminder)
+```
+
+# Asignacion 1
+
+### Vector de paises del primer cuartil de la DF segun el PIB
+
+```{r}
+#Primero debemos agregar la columna con los datos del PIB total
+df_gapminder1 <- df_gapminder %>%
+mutate(pib = pop * gdpPercap)
+#Ahora vamos a filtrar el primer cuartil de la DF
+primer_cuartil_pib <- quantile(df_gapminder1$pib, probs = 0.25)
+#el comando quantile indica que trabajaremos con cuartiles y asignamos el
+#argumento probs=0.25 para indicar el 25% de la DF o el 1er cuartil
+paises_primer_cuartil <- df_gapminder1[df_gapminder1$pib <= primer_cuartil_pib,]
+paises_vector <- paises_primer_cuartil$country
+print(paises_vector)
+#Filtramos los datos estableciendo que se tomen los paises por orden de su PIB
+```
+
+# Asignacion 2
+
+### Promedio del PIB percapita de Argentina para todos sus periodos
+
+```{r}
+#Primero filtramos los datos de Argentina
+argentina <- gapminder[gapminder$country == "Argentina",]
+#Luego calculamos el promedio de su pib percapita
+promedio_pib_argentina <- mean(argentina$gdpPercap)
+print(promedio_pib_argentina)
+```
+
+# Asignacion 3
+
+### Lista con: nombre de paises, pib promedio de todos los paises 
+### en todos los periodos y por continente (con 5 valores)
+
+```{r}
+paises_lista <- df_gapminder1 %>%
+  group_by(country) %>%
+  summarize(meanpib = mean(pib))
+#usamos el comando group_by para agrupar los datos iguales dentro de la columna
+#paises. Y el comando summarize para crear una nueva fila de datos que combina
+#las variables agrupadas
+#este comando en especifico lo hice gracias a investigacion en internet e IA
+print(paises_lista, n=142)
+```
+
+# Asignacion 4
+
+### Gráfico Pib percapita de Venezuela en todos los periodos disponibles con
+### Rbase, colocar "labels" en los ejes
+
+```{r}
+# colocar 'labels' en los ejes. Revisar documentación de función 'plot',  
+# proponer e implementar mejoras al gráfico con el argumento 'type'  
+# y cualquier otro que estime conveniente
+venezuela <- df_gapminder[df_gapminder$country == "Venezuela", ]
+graphic_venezuela <- plot(venezuela$year, venezuela$gdpPercap,
+                          type = "b",
+                          col = "blue",
+                          pch = 16,
+                          xlab = "Año",
+                          ylab = "PIB Per Capita",
+                          main = "PIB Per Capita de Venezuela (1952-2007)")
+#la funcion plot nos permite graficar con Rbase y colocamos argumentos de tipo,
+#col para el color del trazo, pch para el tamaño, xlab para la descripcion del
+#eje de las absisas, ylab para la descripcion del eje de las ordenadas y main
+#para el titulo
+```
+
+# Asignacion 5
+
+### 4 DF's Derivadas interesantes: Rusia, Colombia
+
+```{r}
+#primero crearemos un vector con los paises de interes para filtrar en la DF
+#Luego crearemos una DF a partir de la principal y filtraremos por country
+#indicando que los argumentos dento del vector creado que se encuentren en la DF
+#sean los que se filtren para la DF nueva. Tambien filtraremos por los años
+
+#Primera DF
+Paises_guerra_vietnam <- c("United States", "Vietnam", "Cambodia", "Australia",
+                           "New Zeeland", "China")
+guerra_vietnam <- df_gapminder1 %>%
+  filter(country %in% Paises_guerra_vietnam) %>%
+  filter(year<= 1977)
+print(guerra_vietnam, n = 36)
+```
+
+```{r}
+#Segunda DF
+paises_guerra_arabeisraeli <- c("Israel", "Egypt", "Syria", "Lebanon",
+                                "Saudi Arabia", "Iraq")
+guerra_arabe_israeli <- df_gapminder1 %>%
+  filter(country %in% paises_guerra_arabeisraeli)
+print(guerra_arabe_israeli, n=72)
+```
+
+```{r}
+#Tercera DF
+paises_revolucion_cubana <- c("Cuba", "United States", "Costa Rica", "China",
+                               "Venezuela", "Dominican Republic")
+revolucion_cubana <- df_gapminder1 %>%
+  filter(country %in% paises_revolucion_cubana) %>%
+  filter(year<= 1967)
+print(revolucion_cubana, n=24)
+```
+
+```{r}
+gran_colombia <- c("Colombia", "Venezuela")
+DF_gran_colombia <- df_gapminder1 %>%
+  filter(country %in% gran_colombia)
+print(DF_gran_colombia, n=24)
+#NOTA GENERAL: Nose si existe una forma mas ordenada y sencilla de crear las DF
+#con varios paises
+```
+

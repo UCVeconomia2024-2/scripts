@@ -1,0 +1,86 @@
+---
+title: "mi_primer_archivo.R"
+author: "dalexna"
+format: html
+editor: visual
+---
+
+```         
+# Este es mi primer archivo en R
+```
+
+```{r}
+install.packages('dplyr')
+```
+
+```{r}
+install.packages('stringr')
+```
+
+```{r}
+library(dplyr)
+```
+
+```{r}
+library(stringr)
+```
+
+```{r}
+# Vector numérico
+numeros <- c(1, 2, 3, 4, 5)
+```
+
+```{r}
+# Vector de caracteres
+dias_semana <- c("lunes", "martes", "miércoles", "jueves", "viernes", "sábado", "domingo")
+```
+
+```{r}
+# Vector lógico
+mayores_edad <- c(TRUE, FALSE, TRUE)
+```
+
+```{r}
+# vectores con la fecha
+fechas_nacimiento <- c('2010-01-01', "2005-06-10",'1999-10-31')
+
+```
+
+```{r}
+#Vectores numericos pares
+num_par <- c(2,4,6,8,10)
+```
+
+```{r}
+#Vectores numericos impares
+numericos_impares <- c(1,3,5,7,9)
+```
+
+```{r}
+#NOMBRE FACULTAD Y UNIVERSIDAD
+facult-univ <- c("faces","UCV")
+```
+
+```{r}
+#nombre de los tres primeros meses del ano
+vector_fechas <- c("2024-01-01", "2024-01-31", '2024-02-01', "2024-02-28",'2024-04-01',"2024-04-31")
+
+```
+
+```{r}
+#cada número del 1 al 5 es mayor que 3 
+mayor_que_cinco <- c(FALSE,FALSE,FALSE,TRUE,TRUE)
+
+
+```
+
+```{r}
+#Indicando si cada letra de la palabra “banana” es una “a”
+letra_banana <- c(FALSE,TRUE,FALSE,TRUE,FALSE,TRUE)
+```
+
+```{r}
+#vector fecha del primer dia y ultimo dia del ano
+vector_fechas <- c("2024-01-01", "2024-01-31", '2024-02-01', "2024-02-28",'2024-04-01',"2024-04-31")
+
+```

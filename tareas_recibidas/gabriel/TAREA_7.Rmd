@@ -1,0 +1,56 @@
+---
+title: "tarea 7"
+author: "Gabriel Mendoza"
+date: "2024-11-18"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+#parte 1
+##arreglo de formula 1
+calculo_inflacion <- function(precios_actuales, precios_anterior) {
+  inflacion <- ((precios_actuales/ precios_anterior)-1)*100
+  return (inflacion)
+}
+calculo_inflacion(10, 14) 
+calculo_inflacion(12, 9)
+calculo_inflacion(precios_anterior =10, 
+                  precios_actual=14)
+calculo_inflacion(precios_actual =20, 
+                  precios_anterior= 21)
+```
+
+```{r}
+#PARTE 2
+##ARREGLO DE FORMULA 2
+calcular_pib_per_capita <- function(pib_total,poblacion) {
+  # Calculamos el PIB per cápita
+  pib_per_capita <- (pib_total / poblacion)
+  
+  return(pib_per_capita)
+}
+pib_total <- 123000043  # PIB total en millones de dólares
+poblacion <- 24531    # Población en millones
+calcular_pib_per_capita (pib_total,poblacion)
+```
+
+```{r}
+#parte 3
+##Tasa de crecimiento del PIB:
+##Fórmula: Tasa de crecimiento = [(PIB actual - PIB anterior) / PIB anterior] * 100
+tasa_de_crecimiento_vnzla <- function(pib_anterior, pib_actual) {
+  tasa_de_crecimiento <- ((pib_actual-pib_anterior)/ pib_anterior)*100
+  return(tasa_de_crecimiento)
+}
+  ##millones de dolares
+  ##datos ficticios
+  pib_actual <- 30500  
+  pib_anterior <- 30256 
+  
+  tasa_de_crecimiento_vnzla(pib_actual,pib_anterior)
+```
+  

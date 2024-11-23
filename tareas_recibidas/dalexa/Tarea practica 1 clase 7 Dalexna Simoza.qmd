@@ -1,0 +1,41 @@
+---
+title: "mi_primer3_archivo.R"
+author: "dalexna simoza"
+format: html
+editor: visual
+---
+
+#Mi calculo de la función sera económico con un planteamiento de un problema económico en mercado en competencia imperfecta.
+
+#Problema : Dos productores de telefonia celular Sansung y Apple tienen cada uno unos costes fijos de 200.000 y unos costos marginales igual a 0,80 \$ por unidad producida. Si samsung produce 1 MM de unidades al ano y Apple 1,2 MM halle costo total de Samsung y Apple.
+
+```{r}
+#declaro mi funcion y sus variables 
+calculo_costo_total<- function(costo_fijos, costo_marginal, Q_Cantidad) {
+ costo_total <- costo_fijos + (costo_marginal * Q_Cantidad)
+ return (costo_total)
+}
+```
+
+```{r}
+# Samsung
+costo_fijos <- 200000
+costo_marginal <- 0.80
+q_cantidad <- 1000000
+
+costo_total_samsung <- calculo_costo_total(costo_fijos, costo_marginal, q_cantidad)
+
+print(costo_total_samsung)
+
+```
+
+```{r}
+# Apple
+costo_fijos <- 200000
+costo_marginal <- 0.80
+q_cantidad <- 1200000
+
+costo_total_apple <- calculo_costo_total(costo_fijos, costo_marginal, q_cantidad)
+
+print(costo_total_apple)
+```

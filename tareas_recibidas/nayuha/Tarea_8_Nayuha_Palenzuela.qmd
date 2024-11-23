@@ -1,0 +1,91 @@
+---
+title: "Tarea_8_Datos_Gapminder"
+author: "Nayuha_Palenzuela"
+format: html
+editor: visual
+date:  "Noviembre 20, 2024"
+---
+
+## 1- Vector con países que están en el primer cuartil de la DF según el PIB
+
+#### Creación de una nueva columna en la cual se expresa el PIB Total 
+
+```{r}
+library(tidyverse)
+library(gapminder)
+
+df_gap_gdp_1 <- df_gapminder %>% 
+  select(country,
+         gdpPercap,
+         pop)%>%
+  mutate(PIB_total=gdpPercap*pop)
+
+
+# Comprobamos que la nueva columna creada para visualizar el PIB_total 
+# aparezca en nuestra nueva df.
+
+head(df_gap_gdp_1)
+
+
+```
+
+```{r}
+
+# Revisamos summary
+
+summary(df_gap_gdp_1)
+```
+
+```{r}
+
+# Buscamos el primer cuartil 
+
+primer_cuartil <- quantile(df_gap_gdp_1$PIB_total,0.25)
+
+
+# Filtramos por paises para el primer cuartil 
+primer_cuartil_paises <- unique(df_gap_gdp_1$country[
+  df_gap_gdp_1$PIB_total<=primer_cuartil])
+
+# Revisamos el resultado de lo que se hizo
+primer_cuartil_paises
+```
+
+```{r}
+# Buscamos el primer cuartil 
+
+primer_cuartil_1 <- quantile(df_gap_gdp_1$PIB_total,0.25)
+
+# Filtramos por paises para el primer cuartil 
+primer_cuartil_pib_total_1 <- unique(df_gap_gdp_1$PIB_total[
+  df_gap_gdp_1$PIB_total<=primer_cuartil])
+
+# Revisamos el resultado de lo que se hizo
+primer_cuartil_pib_total_1 
+```
+
+```{r}
+
+library(skimr)
+
+datos_sumario <-skim(gapminder)
+
+datos_sumario$numeric.p25
+datos_sumario$numeric.p50
+datos_sumario$numeric.p75
+
+```
+
+## 2- Promedio del Pib percapita de Argentina para todos los períodos disponibles
+
+```{r}
+
+# filtramos la información de Argentina con el by operator 
+
+datos_de_argentina <- df_gapminder%>%
+  filter(country== "Argentina")
+
+promedio_argentina_gdpPercap <-mean(datos_de_argentina$gdpPercap, na.rm = TRUE)
+
+promedio_argentina_gdpPercap
+```

@@ -1,0 +1,171 @@
+---
+tittle: "Cuarta Tarea"
+format: html
+editor: visual
+author: "Isaias De Ascencao"
+date: "Noviembre 21, 2024"
+---
+
+```{r}
+library(readxl) 
+library(dplyr) 
+library(tidyverse) 
+library(stringr)
+
+ruta<-'data_in/gapminder.xlsx' 
+df_gapminder<-read_xlsx(ruta)
+```
+
+```{r}
+#1) Vector con países que están en el primer cuartil 
+#de la DF según el PIB.
+#Usamos la funcion quantile, donde encadenamos el PIB
+#per capita de la base de datos con la probabilidad del 25%
+#que en este caso, es el primer cuartil.
+library(dplyr)
+primer_cuartil<-quantile(df_gapminder$gdpPercap, probs = 0.25)
+Paises_del_pq<-df_gapminder%>%
+  filter(gdpPercap <= primer_cuartil) %>% 
+  pull(country)%>%
+  print()#Usamos la funcion pull
+#para extraer una columna, en este caso, los paises del 
+#primer cuartil.
+
+library(dplyr)
+primer_cuartil<-quantile(df_gapminder$gdpPercap, probs = 0.25)
+Paises_del_pq<-df_gapminder%>%
+  filter(gdpPercap <= primer_cuartil) %>%
+  pull(country)%>%
+  unique()%>%
+  print()#Usamos la funcion unique para que no se repitan 
+#los nombres del primer cuartil.
+
+```
+
+```{r}
+#2) Promedio del Pib per capita de Argentina para 
+#todos los períodos disponibles
+  
+Argentina_y_su_PIB<-df_gapminder%>%
+  filter(country=="Argentina")%>%
+  select(country, gdpPercap)%>%
+  mutate(mediapib=mean(gdpPercap))%>%
+  distinct("Argentina", mediapib) #Usamos la funcion distinct
+#para no repetir los promedios asi como el nombre del pais,
+#de esa forma, tambien se elimina el PIB per capita.
+```
+
+```{r}
+#3) Construir lista con los siguientes elementos:
+# a) nombre países
+# b) pib promedio de todos los paises, en todos los periodos
+# por continente (son 5 valores)
+Lista_de_paises<-df_gapminder%>%
+  select(country)%>%
+  unique() #Al igual que en la primera actividad, usamos esta funcion 
+#para que los nombres no se repitan.
+
+
+lista_paises <- df_gapminder%>%
+  group_by(country, continent)%>%
+  summarize(PIB_promedio = mean(gdpPercap), .groups = "drop")%>%
+  group_by(continent)
+#Usamos la funcion group_by para, la primera 
+#la usamos para crear un subconjunto con el continente y los paises, 
+#mientras que la segunda la usamos para el continente para agrupar 
+#datos de la media del PIB de cada continente.
+
+lista_continentes <- df_gapminder %>%
+  group_by(continent) %>%
+  summarize(PIB_promedio = mean(gdpPercap))%>% 
+  print() #Usamos la funcion 
+#summarize en lugar de summary porque proporciona resumenes
+#del subconjunto que estamos usando (en este caso, los continentes)
+#Tambien usamos la funcion group_by para agrupar los datos 
+#por continentes.
+```
+
+```{r}
+#4) Gráfico de Pib percapita de Venezuela en todos los 
+#períodos disponibles (usar RBase),
+# colocar `labels` en los ejes. Revisar documentación 
+#de función `plot`, proponer e 
+# implementar mejoras al gráfico con el argumento 
+#`type` y cualquier otro que estime 
+# conveniente.
+Venezuela<-df_gapminder%>%
+  filter(country=="Venezuela")%>%
+  select(year, gdpPercap)
+
+plot(Venezuela$year,Venezuela$gdpPercap,
+     xlab = "Año",
+     ylab = "PIB per capita",
+     main = "Evolucion del pib per capita en Venezuela")
+#Usamos la funcion plot para hacer un grafico basico de r. Ademas,
+#establecemos xlab y ylab para los ejes, mientras que main se usa 
+#para el titulo.
+
+plot(Venezuela$year,Venezuela$gdpPercap,
+     type = "b",
+     col = "red",
+     lwd = 3,
+     xlab = "Año",
+     ylab = "PIB per capita",
+     main = "Evolucion del pib per capita en Venezuela")
+#Usamos tambien la descripcion type para unir los puntos
+#de cada periodo con lineas, col para definir el color de la linea y 
+#establecer el color de la linea.
+```
+
+```{r}
+# 5) Crear 4 DF's derivadas de Gapminder que contengan 
+#datos de interés para ser analizados
+# explicar muy brevemente la razón y/o utilidad de tal selección.
+
+
+Venezuela<-df_gapminder%>%
+  filter(country=="Venezuela")%>%
+  select(country,year,pop, lifeExp)
+#Esta primera seleccion la use para comparar el crecimiento de 
+#la poblacion y el crecimiento de la esperanza de la vida. 
+
+
+USA<-df_gapminder%>%
+  filter(country=="United States")%>%
+  select(country,year,pop, gdpPercap)
+China<-df_gapminder%>%
+  filter(country=="China")%>%
+  select(country,year,pop, gdpPercap)
+USA_China<-rbind(USA, China)
+#La segunda df la hice para comparar la evolucion del pib per capita 
+#y la poblacion entre China y USA.
+#La funcion rbind se uso para, pero puede ser usado para 
+
+
+Brasil<-df_gapminder%>%
+  filter(country=="Brazil")%>%
+  select(lifeExp, gdpPercap)
+#Esta otra df es con el fin de comparar principalmente como aumenta
+#la esperanza de vida en relacion al PIB per capita.
+
+
+America<-df_gapminder%>%
+  filter(continent=="Americas")%>%
+  select(country,year,lifeExp,pop,gdpPercap)%>%
+  mutate(PIB=pop*gdpPercap)
+#Esta df nos proporciona datos sobre la poblacion, la esperanza
+#de vida y el PIB per capita para los paises del continente americano.
+```
+
+```{r}
+#FUNCIONES NUEVAS:
+# - pull().Sirve para extraer columnas por vectores.
+# - unique(). Sirve para identificar los valores una sola vez y que 
+#los mismos no se repitan.
+# - rbind().Permite unir dos o mas data frames usando filas.
+#Para ello, los df deben tener las mismas columnas.
+# - group_by(). agrupa un df por una o mas variables.
+# - summarize(). Calcula estadisticas para el grupo creado con el
+#codigo anterior.
+
+```

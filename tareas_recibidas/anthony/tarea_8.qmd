@@ -1,0 +1,134 @@
+---
+title: "tarea_8"
+author: "Anthony Prado"
+format: html
+editor: visual
+date: November 19, 2024
+---
+
+## Asignación 1
+
+```{r}
+#Se nos pide Vector con países que están en el primer cuartil de la DF según el PIB
+library(readxl)
+library(dplyr)
+ruta <- 'data_in/gapminder.xlsx'
+df_gapminder <- read_excel(ruta)
+library(stringr)
+library(tidyverse)
+#Primero cargamos todas las librerias que vamos a usar
+#Luego creamos una nueva columna en el df llamada GDP
+
+df_gapminder$GDP <- df_gapminder$pop * df_gapminder$gdpPercap
+
+#Ahora con los datos conseguido en GDP filtramos el primer cuartil
+
+primer_quartil_paises <- df_gapminder %>%
+  group_by(country) %>%
+  summarize(primer_cuartil_GDP = quantile(GDP, probs = 0.25))
+view(primer_quartil_paises)
+
+ 
+
+```
+
+`group_by(country)` se encarga de agrupar los datos por paises
+
+`summarize(primer_cuartil_GDP = quantile(GDP, probs = 0.25)):` aqui creamos una variable que resume la informacion que definimos despues lo primero que definimos es como se llamara en este caso `primer_cuartil_GDP` esta se vera definida por `quantile(GDP, probs=0.25)` en donde quantile le dice que estaremos trabajando con cuantile y probs=0.25 el primer cuartil (sabiendo que de estad'istica hay 4 cuartiles que representan el 25% del total cada uno)
+
+## Asignación 2
+
+```{r}
+#Nos piden el promedio del Pib percapita de Argentina para todos los períodos disponibles
+arg_gdpPercap <- df_gapminder%>%
+  filter(country == "Argentina")
+mean_arg_gdpPercap <- mean(arg_gdpPercap$gdpPercap)
+print(mean_arg_gdpPercap)
+
+```
+
+Aqui podemos ver como primero filtramos que el pais trabajado sea argentina creando la variable `arg_gdpPercap`, luego a traves de ella conseguimos con la variable `mean_arg_gdpPercap` el promedio
+
+## Asignación 3
+
+```{r}
+#Ahora nos piden  Construir lista con los siguientes elementos:
+#   a) nombre países
+#   b) pib promedio de todos los paises, en todos los periodos
+#   por continente (son 5 valores)
+country_gdpPercaps <- df_gapminder%>%
+  group_by(country) %>%
+  summarize(meangdpPercap = mean(gdpPercap))
+
+print(country_gdpPercaps)
+  
+
+```
+
+en el chunk anterior creamos la lista en donde la funcion `goup_by` se encarga de agrupar los paises mientras que `summarize` de agregar la variable `meangdpPercap`
+
+## Asignación 4
+
+```{r}
+#en esta asignacion nos piden  Gráfico de Pib percapita de Venezuela en todos los
+#períodos disponibles (usar RBase),
+# colocar `labels` en los ejes. Revisar documentación de función `plot`, proponer e 
+# implementar mejoras al gráfico con el argumento `type` y cualquier otro que estime 
+# conveniente
+venezuela <- df_gapminder[df_gapminder$country == "Venezuela", ]
+graphic_venezuela <- plot(venezuela$year, venezuela$gdpPercap,
+                          type = "b",
+                          col = "red",
+                          pch = 16,
+                          xlab = "Año",
+                          ylab = "PIB per capita",
+                          main = "PIB per capita de Venezuela(1952-2007)")
+
+```
+
+Lo primero que hacemos es crear la variable `venezuela` en donde filtramos todos los datos de Venezuela, luego creamos la variable `graphic_venezuela` en donde llamamos la funcion `plot` para establecer los parametros del grafico
+
+## Asignacion 5
+
+```{r}
+#Tenemos que crea 4 DF segun nuestro criterio
+
+#Mi primer df sera:
+
+mayor_gdpPercap <- df_gapminder%>%
+  filter(year>2000)%>%
+  arrange(desc(gdpPercap))
+
+top_25_paises_1 <- head(mayor_gdpPercap, 25)
+
+print(top_25_paises_1)
+#con intensiones de conseguir patrones en los años 
+#Mi segunda DF sera:
+menor_gdpPercap <- df_gapminder%>%
+  filter(year>2000)%>%
+  arrange(!desc(gdpPercap))
+
+top_25_paises <- head(menor_gdpPercap, 25)
+
+print(top_25_paises) #esta muy presente el 2002 y el 2007 en esos years, es curioso porque
+#en el 2007 comenzo la gran recesion luego de la bruja inmobiliaria en 2006
+
+#mi tercera DF sera:
+
+df_gdp_year_and_continent_percap <- df_gapminder%>%
+  group_by(continent, year) %>%
+  summarize(promedio_gdp = mean(gdpPercap, na.rm = TRUE))
+
+print(df_gdp_year_and_continent_percap)
+#para tener los datos a la mano para luego hacer un grafico de que continente tiene
+#mayor GDP percap por año
+
+#Mi cuarta y ultima DF sera:
+df_pop_year_and_continent <- df_gapminder%>%
+  group_by(continent, year) %>%
+  summarize(promedio_pop = mean(pop, na.rm = TRUE))
+  
+print(df_pop_year_and_continent)
+
+#para estudiar el crecimiento de la poblacion en cada continente 
+```

@@ -1,0 +1,58 @@
+////////////
+
+cronograma
+
+25/11 asignacion videos/ investigar /ejercicios case_when, agrupar. Recordar viñeta dplyr
+
+27/11 group_by, summarise, regresion lineal vectorizada
+
+29/11 (remota) coerce, NA, tablas cruzadas
+
+2/12 long y wide format, pivoteo
+
+4/12 applys (acceder a elementos, sobre filas y columnas, crear df con bind)
+
+6/12 (remota) trabajando con fechas
+
+9/12 visualizacion, análisis exploratorio de datos
+
+11/12 visualizacion, datasaurus
+
+13/12 (remota voluntaria) trabajando con strings
+
+vacaciones. paquete de ejercicios que vi en coursera, carpentries, gente sociable
+
+##########
+8/1 repaso/purrr/lectura en bucle
+
+13/1 reportes/tablas DT y GT/nombres columnas /presentacion preproyecto
+
+15/1 dashboard
+
+17/1 (remota voluntaria) dashboard segunda parte 
+
+20/1 conexiones apis, scrapy 
+
+22/1 shiny
+
+25/1 (remota voluntaria) shiny segunda parte
+
+27/1 clustering, reglas asociacion, otro ML
+
+29/1 automatizacion jobs, github actions
+
+31/1 (remota voluntaria) publicacion reportes, shinyapp
+
+3/2 revision proyectos
+
+5/2 conexiones a DB, lectura y escritura
+
+10/2 joins
+
+12/2 presentacion proyecto
+
+
+# Clases Extra
+Usar positcloud, publicar en rstudiopubs, blog-webpage, etiqueta google
+
+

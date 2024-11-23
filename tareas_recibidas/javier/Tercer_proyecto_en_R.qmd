@@ -1,0 +1,35 @@
+---
+title: "Tercer_proyecto_en_R"
+author: "Javier Melendez"
+format: html
+editor: visual
+---
+
+## Elasticidad precio de la demanda
+
+La función para calcula la elasticidad precio de la demanda , que mide cómo la cantidad demandada de un bien responde a cambios en su precio. Permite clasificar la sensibilidad de los consumidores a los cambios de precios.
+
+```{r}
+# Definir la función
+calculo_elasticidad <- function(cambio_cantidad, cambio_precio) {
+# cambio_cantidad = porcentaje de cambio en la cantidad demandada
+# cambio_precio = porcentaje de cambio en el precio del bien
+  
+elasticidad <- cambio_cantidad / cambio_precio
+return(elasticidad) 
+}
+```
+
+Si hay un incremento del precio en 20% y disminución en la cantidad demandada de 17%. Al introducir estos valores en los códigos, podemos obtener un cálculo preciso de la elasticidad precio de la demanda.
+
+```{r}
+#Calculo de la elasticidad precio de la demanda
+
+# Llamar a la función con valores válidos
+ resultados <- calculo_elasticidad(-17, 20) 
+
+# Imprimir el resultado
+print(resultados) 
+```
+
+El resultado obtenido (-0.85) indica que la demanda del producto es inelástica. Indicando que pequeños cambios en el precio no afectarán drásticamente las ventas.
