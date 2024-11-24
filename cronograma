@@ -53,6 +53,58 @@ vacaciones. paquete de ejercicios que vi en coursera, carpentries, gente sociabl
 
 
 # Clases Extra
-Usar positcloud, publicar en rstudiopubs, blog-webpage, etiqueta google
+Usar positcloud, publicar en rstudiopubs, blog-webpage, etiqueta googl
+Trabajando con mapas
+
+//////
+
+Función ingresos obtenidos (unidades, precio)
+
+lidiando con NA´s
+
+Importar, tres métodos
+
+csv, xls, json
+
+Pipe operator
+
+------
+elementos
+- Capacidades Gráficas
+- Origenes. Representaciones de un conocimiento
+- Cómo vemos y entendemos las formas
+- Explicar o reforzar una hipotesis
+- Mentir o manipular
+- No expresar bien:
+    - Antiejemplos
+- Caracter subjetivo
+- Buenas Prácticas
+- Tipos de gráfico (barras, pie,...)
+- Tipos estáticos e interactivos (mayor insight)
+- Principios de graficación: Edward Tufte
+- Gramática de los gráficos
+  - Leland
+  - ggplot2
+- Capacidades ggplot2
+- Principios de graficación en ggplot2. referencia a libcurlVersion()
+
+
+df_gapminder%>%
+  slice_tail(n=5)
+  
+  
+  ### EJERCICIO
+  Determinar cuáles ejercicios de https://ucveconomiar4ds.netlify.app/practicas/clase_8
+  se pueden hacer mediante dplyr. Los que están previo a donde se empieza a trabajar con gapminder
+  
+  
+  ### notas próximos cursos
+  # 2da clase calculadora
+  # 3 era variables, clase 5
+  # 4 ta funciones precargadas-clase 5
+  # 5 rstudio IDE, WD, setwd, creacion proyecto (clase 2 2024)
+  # 6 empezar asignacion variables
+  # 7 instalar paquetes, clase 4
+  empezar con láminas sin entrar en RStudio. Hacerlo en 4ta
 
 
