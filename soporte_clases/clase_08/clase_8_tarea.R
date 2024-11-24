@@ -9,7 +9,7 @@
 # - Revisar "Aspectos generales sobre los entregables (tareas) en formato qmd" que fue
 # indicado en archivo `clase_7_tarea.R`
 
-# 1) Vector con países que están en el primer cuartil de la DF según el PIB
+# 1) Vector con países que están en el primer cuantil de la DF según el PIB
 
 # 2) Promedio del Pib percapita de Argentina para todos los períodos disponibles
 

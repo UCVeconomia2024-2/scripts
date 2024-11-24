@@ -28,3 +28,15 @@ calculo_ciclo_de_vida(vida_laboral=45,
               ingreso_anual=30000)
 
 ```
+
+Todo bien, el único detalle es el uso de las llaves. La primera debe ir seguida del enunciado de los argumentos, y el comentario que colocaste no debe ir en esa línea, sino luego de la llave del inicio, así:
+
+```{r}
+calculo_ciclo_de_vida <- function(vida_laboral, year_de_vida,ingreso_anual){
+  #realizamos la operacion 
+  ciclo_de_vida <-(vida_laboral/year_de_vida)*ingreso_anual
+  return(ciclo_de_vida)
+  }
+```
+
+También faltaba el indentado del `return`

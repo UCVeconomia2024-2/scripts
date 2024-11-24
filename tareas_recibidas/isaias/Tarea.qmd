@@ -31,14 +31,17 @@ Paises_del_pq<-df_gapminder%>%
 #para extraer una columna, en este caso, los paises del 
 #primer cuartil.
 
-library(dplyr)
-primer_cuartil<-quantile(df_gapminder$gdpPercap, probs = 0.25)
+# Está bien el planteamiento que haces, pero no uses el print del final, ya que un print no se usa al generar una variable u objeto. El print sólo es para generar una salida en pantalla de algo que ya existe. Es decir, con
+
 Paises_del_pq<-df_gapminder%>%
-  filter(gdpPercap <= primer_cuartil) %>%
-  pull(country)%>%
-  unique()%>%
-  print()#Usamos la funcion unique para que no se repitan 
-#los nombres del primer cuartil.
+  filter(gdpPercap <= primer_cuartil) %>% 
+  pull(country)
+
+# y luego con 
+print(Paises_del_pq)
+# está bien hecho el ejercicio. 
+
+# Otro detalle está el nombre de la variable. Según las pautas que vimos, evita usar las mayúsculas al nombrar variables. Esto sólo es una recomendación de estilo que no altera el resultado
 
 ```
 
@@ -53,6 +56,23 @@ Argentina_y_su_PIB<-df_gapminder%>%
   distinct("Argentina", mediapib) #Usamos la funcion distinct
 #para no repetir los promedios asi como el nombre del pais,
 #de esa forma, tambien se elimina el PIB per capita.
+
+# Está bien, pero aún no hemos visto la función distinct. Ten presente que si la vas a usar, evalúes la salida previa a aplicarla ya que generalmente se usa con otro argumento que luego veremos. Un par de formas alternativas sin el distinct, hubiesen sido
+
+
+df_gapminder%>%
+  filter(country=="Argentina")%>%
+  select(country, gdpPercap)%>%
+  mutate(mediapib=mean(gdpPercap))%>%
+  slice(1)
+
+df_gapminder%>%
+  filter(country=="Argentina")%>%
+  select(country, gdpPercap)%>%
+  mutate(mediapib=mean(gdpPercap))%>%
+  .[1,]
+
+
 ```
 
 ```{r}
@@ -65,6 +85,22 @@ Lista_de_paises<-df_gapminder%>%
   unique() #Al igual que en la primera actividad, usamos esta funcion 
 #para que los nombres no se repitan.
 
+# luego del unique, siguiendo con lo que venías aplicando,hubieses podido aplicar un pull(country) ya que sino lo haces, la estructura de datos que te queda es una df. Camino alterno era usar el operador $ para jalarte solo el vector. E.g.
+
+#1)
+Lista_de_paises<-df_gapminder%>%
+  select(country)%>%
+  unique()%>%
+  pull(country)
+
+#2)
+vector_paises<-df_gapminder%>%
+  select(country)%>%
+  unique()
+
+vector_paises <- vector_paises$country
+
+###########################
 
 lista_paises <- df_gapminder%>%
   group_by(country, continent)%>%
@@ -83,6 +119,36 @@ lista_continentes <- df_gapminder %>%
 #del subconjunto que estamos usando (en este caso, los continentes)
 #Tambien usamos la funcion group_by para agrupar los datos 
 #por continentes.
+
+############# version comentada
+lista_paises <- df_gapminder%>%
+  group_by(country, continent)%>%
+  summarize(PIB_promedio = mean(gdpPercap), .groups = "drop")%>%
+  group_by(continent)
+
+# Muy buena la investigación que realizaste ya que lograste el objetivo de
+# extraer los valores promedio por continente. En cuanto al problema planteado, acá faltó sólo extraer el vector que denominaste "PIB_promedio".
+
+# No obstante, también era válido tener la tibble-df que muestras. Voy al próximo punto
+
+
+df_pib_continentes <- df_gapminder %>%
+  group_by(continent) %>%
+  summarize(PIB_promedio = mean(gdpPercap))
+
+# omitir el print en la df anterior
+
+
+#extraer el pib promedio por continente
+vector_pib_mean_continent <- df_pib_continentes$PIB_promedio
+
+#summarize en lugar de summary porque proporciona resumenes
+#del subconjunto que estamos usando (en este caso, los continentes)
+#Tambien usamos la funcion group_by para agrupar los datos 
+#por continentes.
+# La idea final era tener una lista y no una DF
+lista_solicitada= list(paises= vector_paises,
+                       pib_continentes= vector_pib_mean_continent)
 ```
 
 ```{r}
@@ -115,6 +181,8 @@ plot(Venezuela$year,Venezuela$gdpPercap,
 #Usamos tambien la descripcion type para unir los puntos
 #de cada periodo con lineas, col para definir el color de la linea y 
 #establecer el color de la linea.
+
+# Muy bien!!! 
 ```
 
 ```{r}
@@ -155,6 +223,8 @@ America<-df_gapminder%>%
   mutate(PIB=pop*gdpPercap)
 #Esta df nos proporciona datos sobre la poblacion, la esperanza
 #de vida y el PIB per capita para los paises del continente americano.
+
+# Muy bien. La recomendación es que indiques que cada una de las data frames es df_USA o df_usa, df_America o df_america, etc
 ```
 
 ```{r}
@@ -169,3 +239,5 @@ America<-df_gapminder%>%
 #codigo anterior.
 
 ```
+
+Nuevamente: muy buen trabajo!!!!. El enfoque que le estás dando apunta a lo correcto. Espero ver grandes resultados en tu paso por el curso

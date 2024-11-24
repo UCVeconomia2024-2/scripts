@@ -9,6 +9,7 @@ date: November 19, 2024
 ## Asignación 1
 
 ```{r}
+#| eval: false
 #Se nos pide Vector con países que están en el primer cuartil de la DF según el PIB
 library(readxl)
 library(dplyr)
@@ -32,6 +33,65 @@ view(primer_quartil_paises)
 
 ```
 
+```{r}
+
+## Correcciones:
+#1) La aproximación inicial de crear la columna GDP es correcta. Más adelante, con lo ya visto, será via mutate, pero para el momento en que se indicó el ejercicio, es el método correcto el que aplicaste.
+
+##2) 
+library(gapminder)
+# df_gapminder <- read_excel(ruta)
+library(stringr)
+library(tidyverse)
+
+
+#Primero cargamos todas las librerias que vamos a usar - Ok
+#Luego creamos una nueva columna en el df llamada GDP - Ok
+
+df_gapminder$GDP <- df_gapminder$pop * df_gapminder$gdpPercap
+
+#Ahora con los datos conseguido en GDP filtramos el primer cuartil
+
+primer_quartil_paises <- df_gapminder %>%
+  group_by(country) %>% # es válido lo que hiciste en agruparlos, no obstante es mejor esperar a que revisemos la función en clase para que comprendan mejor de qué va
+  summarize(primer_cuartil_GDP = quantile(GDP, probs = 0.75)) # ¡acá es el problema!
+# aplicaste summarize que tampoco la hemos revisado. Estupendo que investigues posibles caminos para resolver los desafíos pero es importante, en primer lugar, que evalúes la salida de datos, en caso de que no estés seguro sobre el procedimiento que aplicas. En este caso, si ves la cantidad de filas de la df obtenida, podrás darte cuenta que no filtraste los países del primer cuartil sino están todos los 142
+nrow(primer_quartil_paises)
+# al aplicar la función head podrás ver que aparece Australia que a todas luces no debe estar en ese grupo de países
+head(primer_quartil_paises)
+# Otro detalle es que el requerimiento indicaba un vector con los nombres de los países y no una df.
+
+# una propuesta para resolver el problema es la siguiente
+#1) seleccionar un año para evaluar los PIB´s ya que sino no tiene mucho sentido el ejercicio
+df_gapminder_2007 <- df_gapminder%>%
+  filter(year==2007)
+
+#2-1) usando summary
+summary(df_gapminder_2007$GDP)
+# haciendo la asignación manual
+primer_cuantil_pib <- 1.744e+10
+
+#2-2) usando la función quantile
+quantile(df_gapminder_2007$GDP)
+# el valor del primer cuantil está en el segundo elemento del vector de salida
+primer_cuantil_pib <- quantile(df_gapminder_2007$GDP)[2]
+
+#3) df con subsetting
+df_paises <- df_gapminder_2007[df_gapminder_2007$GDP<primer_cuantil_pib ,'country']
+
+# aislar el vector con los nombres de los países
+paises <- df_paises$country
+paises ## llamo al vector para verificar la salida
+
+#version dplyr que es hacia donde vamos
+paises <- df_gapminder%>%
+  filter(year==2007)%>%
+  filter(GDP<primer_cuantil_pib)%>%
+  pull(country) ## esta función lo la hemos visto aún. Sirve para extraer un vector de una df que estamos procesando.
+
+paises
+```
+
 `group_by(country)` se encarga de agrupar los datos por paises
 
 `summarize(primer_cuartil_GDP = quantile(GDP, probs = 0.25)):` aqui creamos una variable que resume la informacion que definimos despues lo primero que definimos es como se llamara en este caso `primer_cuartil_GDP` esta se vera definida por `quantile(GDP, probs=0.25)` en donde quantile le dice que estaremos trabajando con cuantile y probs=0.25 el primer cuartil (sabiendo que de estad'istica hay 4 cuartiles que representan el 25% del total cada uno)
@@ -48,6 +108,14 @@ print(mean_arg_gdpPercap)
 ```
 
 Aqui podemos ver como primero filtramos que el pais trabajado sea argentina creando la variable `arg_gdpPercap`, luego a traves de ella conseguimos con la variable `mean_arg_gdpPercap` el promedio
+
+```{r}
+# la única recomendación es el nombre que le asignes a la df que obtienes de filtrar a Argentina como país
+
+df_arg_gdpPercap <- df_gapminder%>%
+  filter(country == "Argentina")
+
+```
 
 ## Asignación 3
 
@@ -66,6 +134,35 @@ print(country_gdpPercaps)
 ```
 
 en el chunk anterior creamos la lista en donde la funcion `goup_by` se encarga de agrupar los paises mientras que `summarize` de agregar la variable `meangdpPercap`
+
+```{r}
+# no, lo solicitado era una lista. No una DF
+
+nombres_paises <- unique(df_gapminder$country)
+
+# Listado continentes
+unique(df_gapminder$continent)
+
+#pib promedio paises continente "Americas"
+df_gapminder_america <- df_gapminder[df_gapminder$continent=='Americas','GDP']
+
+gdp_americas_promedio <- mean(df_gapminder_america$GDP)
+
+#pib promedio paises continente procedimiento anterior para el resto de los continentes
+
+
+# Crear lista. Se tendría que cambiar "gdp_americas_promedio" en las posiciones 2,3,4 y 5 
+# del segundo elemento de la lista con los valores que obtengas en el paso anterior
+
+lista_valores <- list(nombre_paises_total= nombres_paises,
+                      pib_promedio_continente= c(gdp_americas_promedio,
+                                                 gdp_americas_promedio,
+                                                 gdp_americas_promedio,
+                                                 gdp_americas_promedio,
+                                                 gdp_americas_promedio))
+
+
+```
 
 ## Asignación 4
 
@@ -88,6 +185,8 @@ graphic_venezuela <- plot(venezuela$year, venezuela$gdpPercap,
 
 Lo primero que hacemos es crear la variable `venezuela` en donde filtramos todos los datos de Venezuela, luego creamos la variable `graphic_venezuela` en donde llamamos la funcion `plot` para establecer los parametros del grafico
 
+### 
+
 ## Asignacion 5
 
 ```{r}
@@ -102,7 +201,9 @@ mayor_gdpPercap <- df_gapminder%>%
 top_25_paises_1 <- head(mayor_gdpPercap, 25)
 
 print(top_25_paises_1)
-#con intensiones de conseguir patrones en los años 
+#con intensiones de conseguir patrones en los años
+## ummmmm, todo bien menos lo de "conseguir patrones" ya que eso implicaría otro tipo de análisis y dada la separación entre los pedíodos, al menos de 5 años y teniendo tantos países diversos, no me cuadra mucho que consigas esos patrones con los datos disponibles, pero quedo atento a tus observaciones o propuestas,
+
 #Mi segunda DF sera:
 menor_gdpPercap <- df_gapminder%>%
   filter(year>2000)%>%
@@ -113,15 +214,22 @@ top_25_paises <- head(menor_gdpPercap, 25)
 print(top_25_paises) #esta muy presente el 2002 y el 2007 en esos years, es curioso porque
 #en el 2007 comenzo la gran recesion luego de la bruja inmobiliaria en 2006
 
+# Ok, pero un datazo que debes tener presente es que no se incluyen todos los años sino 
+# 1952 1957 1962 1967 1972 1977 1982 1987 1992 1997 2002 2007
+
 #mi tercera DF sera:
 
 df_gdp_year_and_continent_percap <- df_gapminder%>%
   group_by(continent, year) %>%
   summarize(promedio_gdp = mean(gdpPercap, na.rm = TRUE))
 
+# bien la investigación del summarize que en este caso sí te salió bien. Aún no hemos trabajado con los "na" pero usaste el "na.rm=TRUE". En particular, en este conjunto de datos no hay NA´s. Pero la recomendación, que luego veremos en clase, es que no se pueden remover a la ligera ya que existen métodos de imputación para tratar de no quitar a la ligera otros valores presentes en el conjunto de datos
+
 print(df_gdp_year_and_continent_percap)
 #para tener los datos a la mano para luego hacer un grafico de que continente tiene
 #mayor GDP percap por año
+
+# Luego veremos cómo hacer este tipo de gráficos. Recuerda sugerir que lo hagamos en la clase que abordemos ggplot2
 
 #Mi cuarta y ultima DF sera:
 df_pop_year_and_continent <- df_gapminder%>%
@@ -130,5 +238,7 @@ df_pop_year_and_continent <- df_gapminder%>%
   
 print(df_pop_year_and_continent)
 
-#para estudiar el crecimiento de la poblacion en cada continente 
+#para estudiar el crecimiento de la poblacion en cada continente
+
+# Bien! igual ten presente el tema de los NA´s
 ```

@@ -60,6 +60,35 @@ lista_paises_pib <- split(paises_promedio_pib, paises_promedio_pib$continent)
 lista_paises_pib
 ```
 
+```{r}
+# no, lo solicitado era una lista con un vector tipo character con los nombres de los países y otro vector tipo numeric
+
+nombres_paises <- unique(df_gapminder$country)
+
+# Listado continentes
+unique(df_gapminder$continent)
+
+#pib promedio paises continente "Americas"
+df_gapminder_america <- df_gapminder[df_gapminder$continent=='Americas','GDP']
+
+gdp_americas_promedio <- mean(df_gapminder_america$GDP)
+
+#pib promedio paises continente procedimiento anterior para el resto de los continentes
+
+
+# Crear lista. Se tendría que cambiar "gdp_americas_promedio" en las posiciones 2,3,4 y 5 
+# del segundo elemento de la lista con los valores que obtengas en el paso anterior
+
+lista_valores <- list(nombre_paises_total= nombres_paises,
+                      pib_promedio_continente= c(gdp_americas_promedio,
+                                                 gdp_americas_promedio,
+                                                 gdp_americas_promedio,
+                                                 gdp_americas_promedio,
+                                                 gdp_americas_promedio))
+
+
+```
+
 ## Gráfica de PIB per capita de Venezuela en todos los periodos disponibles con R base
 
 ```{r}
@@ -81,20 +110,36 @@ paises_altos_ingresos <- df_gapminder %>%
   group_by(year) %>%
   filter(gdpPercap >= quantile(gdpPercap, 0.75))
 
+unique(paises_altos_ingresos$country)
+# No. El resultado arroja 50 países que no se corresponden con el top 25% que señala
+
+
+
+
 #Países con mayor esperanza de vida (top 25%)
 paises_mayor_esperanza_vida <- df_gapminder %>%
   group_by(year) %>%
   filter(lifeExp >= quantile(lifeExp, 0.75))
+
+nrow(paises_mayor_esperanza_vida)
+unique(paises_mayor_esperanza_vida$country)
+# No. El resultado arroja 48 países que no se corresponden con el top 25% que señala
+
 
 #Países con menor esperanza de vida (top 25%)
 paises_menor_esperanza_vida <- df_gapminder %>%
   group_by(year) %>%
   filter(lifeExp >= quantile(lifeExp, 0.25))
 
+unique(paises_menor_esperanza_vida$country)
+# No. El resultado arroja 122 países que no se corresponden con el top 25% que señala
+
 #Promedio del PIB per cápita por continente
 pib_promedio_por_continente <- df_gapminder %>%
   group_by(continent, year) %>%
   summarize(pib_promedio = mean(gdpPercap))
+
+# No. La salida no se corresponde con lo que indica
 
 #print(paises_altos_ingresos)
 #print(paises_mayor_esperanza_vida)

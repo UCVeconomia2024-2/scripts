@@ -22,3 +22,6 @@ paises_primer_cuartil <- df_gapminder$country[df_gapminder$gdpPercap <= primer_c
 
 # Mostrar los países
 print(paises_primer_cuartil)
+
+# tienes un error en la línea 14 donde no cerraste comillas al final de la línea
+# la primera parte del ejercicio es correcta pero falta el resto de lo solicitado

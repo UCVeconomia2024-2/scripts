@@ -18,6 +18,7 @@ numeros_pares \<- c(2, 4, 6, , 10)
 
 ```{r}
 numeros_pares <- c(2 , 4, 6, 10)
+# pudiste colocar el 8 para continuar con la secuencia de los números pares
 ```
 
 # Error 2
@@ -46,7 +47,15 @@ mayor_que_cinco \< - c(6, 8, 10)
 
 ```{r}
 Par <- c(2,4,6,8,10)
+# pudiste usar la función seq
+seq(from= 2, to= 10, by=2)
+
 Impar <- c(1,3,5,7,9)
+#igualmente en este caso
+seq(from= 1, to= 9,by=2)
+
+
+# recuerda evitar usar mayúsculas al nombrar variables. Está entre las recomendaciones que les di en una de las guías
 ```
 
 # 2.Crear un vector de caracteres:
@@ -55,6 +64,8 @@ Con el nombre de la Facultad y de la Universidad:
 
 ```{r}
 vector_facultad_universidad <- c("Facultad de Ciencias Economicas y Sociales", "Universidad Central de Venezuela")
+# después de crear los vectores, los puedes llamar (colocar el nombre del vector en una línea) para verificar que se creó correctamente
+vector_facultad_universidad
 ```
 
 Con los nombres de los tres primeros meses del año:
@@ -80,10 +91,16 @@ Vector_banana <- c("banana")
 #Palabra banana es una "a"?
 Vector_banana  == "a"
 
+#no, la cosa es por acá
+c('b','a','n','a','n','a')=='a'
+
 ```
 
 Crear un vector de fechas:
 
 ```{r}
 Vector_de_fechas_mias <- c("01-12-2002","31-12-2002", "01-02-2002","28-02-2002","01-10-2002", "31-10-2002")
+
+# lo importante es que tengas en cuenta que en las fechas, primero debe ir el año, luego el mes y finalmente el día.
+# Si usas al la función Sys.Date() podrás verificar lo que te estoy comentando
 ```

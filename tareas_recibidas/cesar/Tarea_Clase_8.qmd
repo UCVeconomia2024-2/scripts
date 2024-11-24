@@ -37,6 +37,12 @@ print(paises_vector)
 #Filtramos los datos estableciendo que se tomen los paises por orden de su PIB
 ```
 
+Muy bien Cesar. Lo único que le agregase es que para extraer los países, al final aplicara un `paises_vector<- unique(paises_vector)` ,
+
+es decir, la función `unique` para no tener valores de países duplicados y reducir de 426 elementos que tienes a sólo los 63 nombres de los países
+
+Quizás, queda a tu elección, puedes sobreescribir `df_gapminder` ya que no les estás quitando datos sino le estás agregando y estás manteniendo todos los datos de entrada. Igual, es sólo un elemento para que lo consideres al trabajar. El flujo de trabajo y las demandas del trabajo que hagas, serán los que dicten parte del camino a seguir.
+
 # Asignacion 2
 
 ### Promedio del PIB percapita de Argentina para todos sus periodos
@@ -49,9 +55,12 @@ promedio_pib_argentina <- mean(argentina$gdpPercap)
 print(promedio_pib_argentina)
 ```
 
+Está bien lo que hiciste y como lo hiciste pero una observación es que no trabajaste con la df_gapminder que cargaste en el primer chunk. El ejercicio salió bien, en cuanto a la salida, ya que cargaste el paquete gapminder que traer esa misma df con el nombre gapminder. Si lo hiciste voluntariamente, obvias esta observación, sino fue así, te salió bien la propuesta por lo que te comenté.
+
 # Asignacion 3
 
-### Lista con: nombre de paises, pib promedio de todos los paises 
+### Lista con: nombre de paises, pib promedio de todos los paises
+
 ### en todos los periodos y por continente (con 5 valores)
 
 ```{r}
@@ -65,9 +74,39 @@ paises_lista <- df_gapminder1 %>%
 print(paises_lista, n=142)
 ```
 
+```{r}
+{r}
+# no, lo solicitado era una lista. No una DF. Acá te coloco uno de los caminos posibles para hacer lo solicitado
+
+nombres_paises <- unique(df_gapminder$country)
+
+# Listado continentes
+unique(df_gapminder$continent)
+
+#pib promedio paises continente "Americas"
+df_gapminder_america <- df_gapminder[df_gapminder$continent=='Americas','GDP']
+
+gdp_americas_promedio <- mean(df_gapminder_america$GDP)
+
+#pib promedio paises continente procedimiento anterior para el resto de los continentes
+
+
+# Crear lista. Se tendría que cambiar "gdp_americas_promedio" en las posiciones 2,3,4 y 5 
+# del segundo elemento de la lista con los valores que obtengas en el paso anterior
+
+lista_valores <- list(nombre_paises_total= nombres_paises,
+                      pib_promedio_continente= c(gdp_americas_promedio,
+                                                 gdp_americas_promedio,
+                                                 gdp_americas_promedio,
+                                                 gdp_americas_promedio,
+                                                 gdp_americas_promedio))
+
+```
+
 # Asignacion 4
 
 ### Gráfico Pib percapita de Venezuela en todos los periodos disponibles con
+
 ### Rbase, colocar "labels" en los ejes
 
 ```{r}
@@ -108,6 +147,24 @@ print(guerra_vietnam, n = 36)
 ```
 
 ```{r}
+
+# por buenas prácticas, recomendación, es bueno que las df les coloques en el nombre "df", por ejemplo, "df_guerra_vietnan"
+
+# pareciera que no se filtraron los valores correspondientes a Nueva Zelanda
+unique(guerra_vietnam$country)
+
+# puedes ver el nombre de los países con
+unique(df_gapminder$country)
+# y ahí te darás cuenta que es "New Zealand" y no  "New Zeeland".
+# con este instrucción lo puedes detectar automáticamente
+Paises_guerra_vietnam[!Paises_guerra_vietnam %in%unique(guerra_vietnam$country) ]
+
+#trata de entender cómo funciona la instrucción anterior
+
+# Esto es importante para que siempre verifiques tus salidas de datos ya que puedes terminar omitiendo datos que sí necesitabas disponer. Es parte de la tarea de un científico de datos
+```
+
+```{r}
 #Segunda DF
 paises_guerra_arabeisraeli <- c("Israel", "Egypt", "Syria", "Lebanon",
                                 "Saudi Arabia", "Iraq")
@@ -133,5 +190,10 @@ DF_gran_colombia <- df_gapminder1 %>%
 print(DF_gran_colombia, n=24)
 #NOTA GENERAL: Nose si existe una forma mas ordenada y sencilla de crear las DF
 #con varios paises
+
+
 ```
 
+Referente a la inquietud final que planteas, depende del caso. Espero justamente trabajar un ejemplo en una de las próximas clases donde debemos filtrar países en una df que aparecen en otra df. La idea es que siempre cuentes con variables que puedan modificarse afectando lo mínimo posible el resto del código.
+
+En cuanto a las df.s que creaste está bien, pero luego tendrías que indagar más en los análisis que hagas con tales subsettings. A los efectos del ejercicio, cumpliste con lo solicitado

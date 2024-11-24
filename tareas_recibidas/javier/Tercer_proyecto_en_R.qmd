@@ -33,3 +33,5 @@ print(resultados)
 ```
 
 El resultado obtenido (-0.85) indica que la demanda del producto es inelástica. Indicando que pequeños cambios en el precio no afectarán drásticamente las ventas.
+
+¡Bien!

@@ -25,3 +25,13 @@ calculo_valor_futuro(500, 0.16, 2)
 
 calculo_valor_futuro(2000, 0.1, 3)
 ```
+
+```{r}
+# Es recomendable seguir las pautas para crear las funciones, en este caso el la llave. La de apertura va al lado del cierre de paréntesis de la indicación de los argumentos, e.g.:
+calculo_valor_futuro <- function(pv, r, t){
+  vf <- pv*(1+r)^t  
+  return(vf)
+}
+# Igualmente, la función está bien planteada
+
+```

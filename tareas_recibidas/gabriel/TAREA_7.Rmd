@@ -53,4 +53,6 @@ tasa_de_crecimiento_vnzla <- function(pib_anterior, pib_actual) {
   
   tasa_de_crecimiento_vnzla(pib_actual,pib_anterior)
 ```
+
+Es correcto. Ten presente que deben ser entregados en formato qmd y no en rmd. Me refiero a la extensión del archivo
   

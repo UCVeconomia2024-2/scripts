@@ -8,17 +8,24 @@ date:  "Noviembre 20, 2024"
 
 ## 1- Vector con países que están en el primer cuartil de la DF según el PIB
 
-#### Creación de una nueva columna en la cual se expresa el PIB Total 
+#### Creación de una nueva columna en la cual se expresa el PIB Total
 
 ```{r}
+### voy a incluir la lectura de gapminder
+library(readxl)
+df_gapminder <- read_xlsx('gaminder.xlsx')
+
 library(tidyverse)
 library(gapminder)
+
 
 df_gap_gdp_1 <- df_gapminder %>% 
   select(country,
          gdpPercap,
          pop)%>%
   mutate(PIB_total=gdpPercap*pop)
+
+# acá faltó importar o hacer la lectura del objeto df_gapminder. Lo que ocurre es que lo tienes en memoria de tu espacio de trabajo pero no en este qmd. Ese es un tema que aún no les he expuesto y comprendo que no te dieses cuenta del detalle
 
 
 # Comprobamos que la nueva columna creada para visualizar el PIB_total 
@@ -62,6 +69,8 @@ primer_cuartil_pib_total_1 <- unique(df_gap_gdp_1$PIB_total[
 
 # Revisamos el resultado de lo que se hizo
 primer_cuartil_pib_total_1 
+
+# Está muy bueno porque lo hiciste con Rbase y era la idea, para que así vean como funciona esto de una forma un tanto más lógica al hacer el subsetting. Esto permitirá que usar dplyr te resulte mucho más fácil ya que tienes claro el fundamento
 ```
 
 ```{r}
@@ -69,6 +78,8 @@ primer_cuartil_pib_total_1
 library(skimr)
 
 datos_sumario <-skim(gapminder)
+
+# era recomendable que aplicaras la función skim al objeto df_gapminder y no a gapminder. Hay una pequeña diferecia entre el objeto que obtienes si lo importas desde excel al que te trae el paquete gapminder, que es con el que estás acá trabajando
 
 datos_sumario$numeric.p25
 datos_sumario$numeric.p50
@@ -88,4 +99,34 @@ datos_de_argentina <- df_gapminder%>%
 promedio_argentina_gdpPercap <-mean(datos_de_argentina$gdpPercap, na.rm = TRUE)
 
 promedio_argentina_gdpPercap
+
+# está bien, pero por los momentos no uses el argumento "na.rm=TRUE". Luego les comentaré para qué sirve
 ```
+
+Con respecto a lo que me preguntaste
+
+*Buenas noches profesor es Nayuha Palenzuela, le envió parte de lo que estoy trabajando en la asignación 8, utilice las funciones que me envió sobre los cuartiles, descargue el paquete de skimr y me arrojó los valores en los cuartiles que le pedí p25, p50, p75, ahora me surge una gran duda sobre la función quantile, investigue sobre como usarla, y al momento de ejecutarla no me arroja un solo valor, si no que me arroja muchísimos valores (lo que no entiendo si es que todos esos valores pertenecen a todos los valores menores al cuartil 25).*
+
+Acá podemos hacer dos cosas
+
+```{r}
+todos_los_cuantiles <- quantile(df_gap_gdp_1$PIB_total)
+todos_los_cuantiles
+
+# se obtiene un vector con 5 elementos
+length(todos_los_cuantiles)
+
+# como me interesa extraer el valor del segundo elemento de todos_los_cuantiles hago un subsetting
+primer_cuartil_1 <- todos_los_cuantiles[2]
+
+
+# alternativa, lo que ya hicieste:
+primer_cuartil_1 <- quantile(df_gap_gdp_1$PIB_total,0.25)
+
+```
+
+Referente al problema del render del qmd
+
+![](SCR-20241124-o69.png)
+
+el problema es que no importaste df_gapminder. En una nota de voz se me va a hacer más fácil explicar la razón del problema.

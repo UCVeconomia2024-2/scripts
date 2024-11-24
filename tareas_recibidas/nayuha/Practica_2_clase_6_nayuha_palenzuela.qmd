@@ -82,3 +82,5 @@ pib_per_capita_resultado <- calcular_pib_per_capita(pib_total, poblacion)
 
 print(pib_per_capita_resultado)  # Imprimir el resultado
 ```
+
+¡Bien!!!

@@ -7,8 +7,8 @@
 # date:  "Noviembre 20, 2024"
 # ---
 
-install.packages('dplyr')
-install.packages('stringr')
+# install.packages('dplyr')
+# install.packages('stringr')
 library(dplyr)
 library(stringr)
 numeros <- c(1,2,3,4,5)
@@ -54,7 +54,7 @@ print(mayor_que_tres)
 # Vector lógico para letras "a" en "banana"
 palabra <- "banana"
 es_a <- strsplit(palabra, "")[[1]] == "a" 
-print(es_a)
+print(es_a) # bien!
 
 # Vector de fechas: Primer y último día de Enero, Febrero y Marzo de 2024
 fechas <- c(
@@ -70,3 +70,10 @@ fechas <- c(
   as.Date("2024-02-01"), as.Date("2024-02-29"),
   as.Date("2024-03-01"), as.Date("2024-03-31"))
 print(fechas)
+
+
+## está bien. Incorporaste algunas funciones que no hemos visto. La idea no era que 
+# investigaran sino que usaran las vistas. Igual, no hay problema en eso
+
+# El archivo lo mandaste como un script de R y debía ser en formato qmd. 
+# Luego hablamos de eso

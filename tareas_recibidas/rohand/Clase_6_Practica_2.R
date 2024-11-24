@@ -22,7 +22,7 @@ resultado1 <- suma(5, 3)
 print(resultado1)
 
 # Llamamos a la función 'suma' con solo un argumento (se usará el valor 
-predeterminado de 'numero2')
+#predeterminado de 'numero2')
 resultado2 <- suma(5)
 print(resultado2)
 
@@ -36,7 +36,7 @@ calculo_inflacion <- function(precios_anterior, precios_actual) {
 }
 
 # Si la función definida en el chunk anterior no se completó correctamente no 
-se podrá ejecutar ninguno de los chunks siguientes
+# se podrá ejecutar ninguno de los chunks siguientes
 calculo_inflacion(10, 14)
 calculo_inflacion(12, 9)
 
@@ -63,3 +63,5 @@ pib_per_capita_resultado <- calcular_pib_per_capita(pib_total, poblacion)
 # Imprimir el resultado
 print(pib_per_capita_resultado) 
 
+### Ok. En un par de líneas te faltó anteceder el numeral para indicar que están 
+# comentadas las líneas
