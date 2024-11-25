@@ -51,7 +51,7 @@ df_gapminder_csv%>%
   group_by(country)%>%
   reframe(cdad_obs=n())
 
-# 2- Obtener cantidad observaciones por continente y país
+# 2- Obtener cantidad observaciones por continente 
 df_gapminder_csv%>%
   group_by(continent)%>%
   reframe(cdad_obs=n())
@@ -61,19 +61,24 @@ df_gapminder_csv%>%
   group_by(continent)%>%
   count()
 
-# 3- Obtener pib total por período y por continente
+# 3- Obtener gdpPercap promedio por período y continente
 df_gapminder_csv%>%
   group_by(continent, year)%>%
   reframe(gdpPercap_promedio= mean(gdpPercap))#%>%
 #print(n=50)
 
-# 4- Obtener población promedio por paíspara todos los períodos 
+# 4- Obtener gdpPercap total por período
+df_gapminder_csv%>%
+  group_by(year)%>%
+  reframe(gdpPercap_promedio= mean(gdpPercap))
+
+# 5- Obtener población promedio por país para todos los períodos 
 df_gapminder_csv%>%
   group_by(country)%>%
   reframe(poblacion_promedio= mean(pop))#%>%
 # filter(country=='Venezuela')
 
-# 5- Crear una serie de valores estadísticos por país para todos los períodos 
+# 6- Crear una serie de valores estadísticos por país para todos los períodos 
 df_gapminder_csv%>%
   group_by(country)%>%
   reframe(poblacion_prom= mean(pop), 
@@ -83,14 +88,14 @@ df_gapminder_csv%>%
           gdp_min= min(gdpPercap))#%>%
 # filter(country=='Venezuela')
 
-# 6- Encadenamiento para clasificar por continente a los países según su PIB
+# 7- Encadenamiento para clasificar por continente a los países según su PIB
 
-# 6.a- crear columna pib_mm
+# 7.a- crear columna pib_mm
 df_gapminder_csv%>%
   filter(year==2007)%>%
   mutate(pib_mm=(gdpPercap*pop)/1000000) # cifras en mm
 
-# 6.b- cuantiles según agrupamiento por continente
+# 7.b- cuantiles según agrupamiento por continente
 df_gapminder_csv%>%
   filter(year==2007)%>%
   mutate(pib_mm=(gdpPercap*pop)/1000000)%>%
@@ -100,7 +105,7 @@ df_gapminder_csv%>%
           country,
           pib_mm)
 
-# 6.c- crear columna para asignación de categorías con función case_when
+# 7.c- crear columna para asignación de categorías con función case_when
 df_gapminder_csv%>%
   filter(year==2007)%>%
   mutate(pib_mm=(gdpPercap*pop)/1000000)%>%
@@ -113,7 +118,7 @@ df_gapminder_csv%>%
                                      pib_mm>= cuantil_1 & pib_mm <= cuantil_3 ~ 'medio',
                                      pib_mm> cuantil_3 ~ 'alto'))
 
-# 6.d- asignar a un nuevo objeto
+# 7.d- asignar a un nuevo objeto
 df_gap_clasi_pibcontinent <- df_gapminder_csv%>%
   filter(year==2007)%>%
   mutate(pib_mm=(gdpPercap*pop)/1000000)%>%
@@ -130,7 +135,7 @@ df_gap_clasi_pibcontinent <- df_gapminder_csv%>%
 View(df_gap_clasi_pibcontinent%>%
        filter(continent=='Americas'))
 
-# 6.e- subsetting países de América reordenados por criterio de pib_mm
+# 7.e- subsetting países de América reordenados por criterio de pib_mm
 df_gap_clasi_pibcontinent_ame <- df_gap_clasi_pibcontinent%>%
   filter(continent=='Americas')%>%
   arrange(desc(pib_mm))
@@ -141,7 +146,7 @@ ggplot(data=df_gap_clasi_pibcontinent_ame)+
                          y= pib_mm,
                          fill = pib_clasificacion))
 
-# 6.f- crear factor para dato categórico y resolver orden de visualización de las columnas
+# 7.f- crear factor para dato categórico y resolver orden de visualización de las columnas
 df_gap_clasi_pibcontinent_ame <- df_gap_clasi_pibcontinent%>%
   filter(continent=='Americas')%>%
   arrange(desc(pib_mm))%>%
@@ -153,6 +158,14 @@ ggplot(data=df_gap_clasi_pibcontinent_ame)+
                          fill = pib_clasificacion))
 
 
+# 8. Salidas distintas en group_by según más de un criterio
+df_gapminder_csv%>%
+  group_by( country, continent)%>%
+  reframe(gdpPercap_promedio= mean(gdpPercap))
+
+df_gapminder_csv%>%
+  group_by(continent, country)%>%
+  reframe(gdpPercap_promedio= mean(gdpPercap))
 ##########################################################################################
 ####### 2 da parte                                                                 #######
 ##########################################################################################
