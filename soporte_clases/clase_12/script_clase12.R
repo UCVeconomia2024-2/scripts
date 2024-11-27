@@ -39,6 +39,8 @@ df_gastosaludmundial <- read.csv('https://raw.githubusercontent.com/UCVeconomia2
 #https://ghdx.healthdata.org/record/ihme-data/global-health-spending-1995-2021
 #https://github.com/UCVeconomia2024-2/scripts/tree/main/data_in/clase_12/IHME
 
+
+
 ##########################################################################################
 ######## Procesamientos. Cada enunciado es un problema a resolver                  #######
 ##########################################################################################
@@ -71,6 +73,7 @@ df_gapminder_csv%>%
 df_gapminder_csv%>%
   group_by(year)%>%
   reframe(gdpPercap_promedio= mean(gdpPercap))
+
 
 # 5- Obtener población promedio por país para todos los períodos 
 df_gapminder_csv%>%
