@@ -292,47 +292,75 @@ df_recycle
 # Crear un vector con algunos valores NA
 datos <- c(1, 2, NA, 4, NA, 6)
 
-datos
+datos[!is.na(datos)]
 # Identificar los valores NA
 is.na(datos)
-
+mean(datos, na.rm=TRUE)
 # Contar los valores NA en el vector 'datos'
 sum(is.na(datos))
 
 # Eliminar filas con valores NA en un data frame
-df <- data.frame(a = c(1, 2, NA), b = c(4, NA, 6))
+df <- data.frame(a = c(1, 2, NA), 
+                 b = c(4, NA, 6))
+
+df
 df_sin_na <- na.omit(df)
 df_sin_na
 
 # Reemplazar valores NA con la media de la columna 'a'
 df$a[is.na(df$a)] <- mean(df$a, na.rm = TRUE)
-df
 
+# evaluar la función mean sin el argumento `na.rm = TRUE`
+mean(df$a)
+
+# evaluar la función mean con argumento `na.rm = TRUE`
 mean(df$a, na.rm = TRUE)
 
+# remover NA's con la función `complete.cases`
 df_completos <- df[complete.cases(df), ]
 df_completos
 
 # Coercion en NA´s
+as.character(c(1,4,NA, 6, NA))
+# mantiene su los valores NA
 
 ## Ejemplo df_ventas
-View(head(df_ventas))
-df_ventas%>%
-  filter(is.na(VAT))
+View(df_ventas)
+str(df_ventas)
 
+# Estas dos opciones no son viables usarlas ya que el operador de comparación lógica `==`
+# no funciona con valores NA
 df_ventas%>%
   filter(VAT==NA)
 
 df_ventas%>%
   filter(VAT!=NA)
 
+# Para poder filtrar se debe usar la función `is.na()`
 df_ventas%>%
   filter(is.na(VAT))
+
+df_ventas%>%
+  filter(is.na(VAT))
+
+# En esta df_ventas se asume que las ventas que tienen el atributo de PRODUCTLINE igual
+# a "buses and trucks" tienen valores de VAT (equivalente de USA al IVA) fijados como NA
+# de lo cual se puede presumir que son ventas exentas de tal impuesto y sería erróneo 
+# remover esas observaciones, por ejemplo, aplicando la función `complete.cases`. Igualmente,
+# es necesario evaluar el método por el cual se imputarán esos valores faltantes, ya que
+# sería incorrecto hacerlo por valores promedio del VAT, sino más bien corresponden a un
+# VAT igual a cero, ya que no hay impuesto en esos casos.
+
 ##########################################################################################
 ######## Parte 6: tidyr formatos long y wide
 ##########################################################################################
 
 # Crear un tibble ancho (wide)
+
+# la función `tribble` sirve para crear tibbles utilizando un diseño fila a fila más fácil
+# de leer. Esto resulta útil para tablas de datos pequeñas en las que la legibilidad es 
+# importante. 
+
 datos_ancho <- tribble(
   ~nombre, ~edad_2015, ~edad_2016, ~edad_2017,
   "Juan",   20,         21,         22,
@@ -342,8 +370,9 @@ datos_ancho <- tribble(
 
 datos_ancho
 
-
 # Crear un tibble largo (long)
+# se realiza de forma manual la creación de los datos en formato long
+
 datos_largo <- tribble(
   ~nombre, ~año, ~edad,
   "Juan",   2015, 20,
@@ -364,7 +393,6 @@ datos_largo <- datos_ancho %>%
 
 datos_largo
 
-
 # Convertir datos_largo a datos_ancho
 datos_ancho <- datos_largo %>%
   pivot_wider(names_from = año,
@@ -383,47 +411,61 @@ ventas_ancho
 
 # Convertir a formato largo
 ventas_largo <- ventas_ancho %>%
-  pivot_longer(cols = starts_with("enero"),
+  pivot_longer(cols = c("enero", "febrero", "marzo"),
                names_to = "mes",
                values_to = "venta")
 
 ventas_largo
 
 # Calcular promedio de ventas por producto
-promedio_ventas <- ventas_largo %>%
+ventas_largo %>%
   group_by(producto) %>%
   summarize(promedio = mean(venta))
-
-promedio_ventas
 
 # Ejemplo promedio acciones
 precio_acciones <- tibble(
   fecha = as.Date("2024-01-01") + 0:9,
-  precio_x = rnorm(10, 0, 1),
-  precio_y = rnorm(10, 0, 2),
-  precio_z = rnorm(10, 0, 4)
+  precio_x = rnorm(n=10, mean= 0, sd= 1),
+  precio_y = rnorm(n=10, mean= 0, sd= 2),
+  precio_z = rnorm(n=10, mean= 0, sd= 4)
 )
+
+# los argumentos de rnorm son:
+# 1) n= cdad de observaciones a generar
+# 2) mean= promedio
+# 3) sd= desviación estandard
 
 precio_acciones
 
-# versión anterior con gather
+# versión anterior con gather. Antes de `pivot_longer` se usaba la función `gather`
 precio_acciones %>% 
   gather("accion_nombe",
          "precio_accion",
          -fecha)
+
+
+pivot_longer(precio_acciones,
+             cols = starts_with('precio'),
+             names_to = "accion",
+             values_to = "valor_accion"
+             )%>%
+  print(n=30) # argumento opcional usado para ver más de 10 filas al hacer el print
 
 # caso relig income
 head(relig_income)
 
 relig_income %>%
   pivot_longer(cols =!religion, 
-               names_to = "income", 
-               values_to = "count")
+               names_to = "ingreso", 
+               values_to = "cdad_personas")%>%
+  print(n=40)
 
 
 # caso éxitos Billboard
 head(billboard)
+View(billboard)
 dim(billboard)
+colnames(billboard)
 
 billboard %>%
   pivot_longer(
@@ -432,7 +474,8 @@ billboard %>%
     # names_prefix = "wk",
     values_to = "rank",
     values_drop_na = TRUE
-  )
+    )%>%
+  print(n=200)
 
 ## remover prefijos wk
 billboard %>%
@@ -448,31 +491,64 @@ billboard %>%
 names(who)
 dim(who)
 
+# En cuanto a los nombres de las columnas, uno de los nombres es "new_ep_m3544".
+# Esto quiere decir que el nombre de la columna codifica información que debe ser extraída
+
+# para extraer esa información es necesario usar "expresiones regulares" que permiten, 
+# mediante patrones presentes, lograer desagregar o romper la string en pedazos, 
+# representando cada pedazo un dato distinto. Ejemplo:
+
+cadena_entrada <- "new_ep_m3544"
+patron <- "new_?(.*)_(.)(.*)" # Hacer consultar a LLM sobre este patrón.
+# Por ejemplo, el prompt puede ser: explicame a detalle qué hace este patrón de expresión
+# regular "new_?(.*)_(.)(.*)". Hazlo paso a paso con el mayor detalle posible
+
+str_match(cadena_entrada, patron) # se usa esta función para desagregar la cadena de entrada
+# se desagrega la cadena de entrada en tres valores que son
+
+#"ep" "m"  "3544"
+
+#"ep"= tipo de enfermedad
+#"m" = genero masculino o femenino
+#"3544"= rango de edad que va de 35 a 44 años
+
+###########
+View((who[100:140,]))
+
 who %>% 
   pivot_longer(
     cols = new_sp_m014:newrel_f65,
-    names_to = c("diagnosis", "gender", "age"),
+    names_to = c("diagnosis", "gender", "range_age"),
     names_pattern = "new_?(.*)_(.)(.*)",
-    values_to = "count"
-  )
+    values_to = "count",
+    values_drop_na = TRUE
+  )%>%
+  filter(count>0) # filtramos sólo las enfermedades que tienen casos mayores que cero
 
-## análisis patrón en string
-library(stringr) # ya está cargada en tidyverse
-str_split("new_sp_m2534", "new_?(.*)_(.)(.*)")
+venezuela <- who %>% 
+  pivot_longer(
+    cols = new_sp_m014:newrel_f65,
+    names_to = c("diagnosis", "gender", "range_age"),
+    names_pattern = "new_?(.*)_(.)(.*)",
+    values_to = "count",
+    values_drop_na = TRUE
+  )%>%
+  filter(count>0) %>%# filtramos sólo las enfermedades que tienen casos mayores que cero
+  filter(str_detect(country, 'Venezuela'))
 
-# Hacer consultar a LLM sobre este patrón
-cadena <- "new_user_123"
-patron <- "new_?(.*)_(.)(.*)"
-
-resultados <- str_match(cadena, patron)
-resultados
+# representación de casos agrupados por año y tipo de enfermedad para Venezuela
+venezuela%>%
+  group_by( year,diagnosis)%>%
+  reframe(total=sum(count))%>%
+  ggplot(aes(x= year, y= total))+
+  geom_line(aes(linetype = diagnosis,
+                colour = diagnosis))
 
 # Ejercicio pivot wider
 # fish encounter
 ######## pivot_wider()
 head(fish_encounters, 8)
-
+nrow(fish_encounters)
 fish_encounters %>%
   pivot_wider(names_from = station, 
               values_from = seen)
-
