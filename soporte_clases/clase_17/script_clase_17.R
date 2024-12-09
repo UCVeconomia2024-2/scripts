@@ -40,3 +40,13 @@ View(df_bcv_tw%>%
        sample_n(100))
 
 
+#### crear secuencia de fechas
+
+# Ejemplo promedio acciones
+precio_acciones <- tibble(
+  fecha = as.Date("2024-01-01") + 0:9,
+  precio_x = rnorm(n=10, mean= 0, sd= 1),
+  precio_y = rnorm(n=10, mean= 0, sd= 2),
+  precio_z = rnorm(n=10, mean= 0, sd= 4)
+)
+
