@@ -1,0 +1,71 @@
+---
+title: "clase 8 tarea 4"
+author: "Dalexna Simoza"
+format: html
+editor: visual
+---
+
+## Crear 4 DF's derivadas de Gapminder que contengan datos de interés para ser analizados \# explicar muy brevemente la razón y/o utilidad de tal selección.
+
+```{r}
+library(readxl)
+library(gapminder)
+library(dplyr)
+library(tidyverse)
+library(stringr)
+```
+
+```{r}
+#cargo la dataframe
+#data_gapminde <- read_excel("gaminder.xlsx")
+data_gapminde <- gapminder::gapminder
+
+
+```
+
+```{r}
+# Agrupar por continente y calcular el PIB per cápita promedio 
+gdp_continent <- data_gapminde %>% 
+  group_by(continent) %>% 
+    summarise(average_gdpPercap = mean(gdpPercap, na.rm = TRUE))
+
+print(gdp_continent)
+# mal indentado
+# revisar material visto en clase https://ucveconomiar4ds.netlify.app/practicas/clase12
+# no se adapta a lo que expliqué el uso de 
+```
+
+```{r}
+# Agrupar por país y año, y calcular la población
+total_poblacion_pais_year <- data_gapminde %>% 
+   group_by(country, year) %>% 
+  summarise(total_population = sum(pop, na.rm = TRUE)) 
+
+print(total_poblacion_pais_year)
+# no entiendo qué significa "calcular la población". Un cálculo incluye disintas posibilidades de operaciones matemáticas. Si evalúas la salida de la df que generaste, es la misma gapminder sin ninguna modificación. Como no indicaste la explicación, sobre la utilidad de hacer esta selección y/o procesamiento, no te puedo ayudar a generar un código que lograse hacer lo que te planteabas
+```
+
+```{r}
+# Agrupar por continente y año, y calcular la expectativa de vida promedio
+vida_exp_continent_year <- data_gapminde %>% 
+  group_by(continent, year) %>% 
+  summarise(average_lifeExp = mean(lifeExp, na.rm = TRUE))
+
+print(vida_exp_continent_year)
+```
+
+El ejercicio indicaba "5) Crear 4 DF's derivadas de Gapminder que contengan datos de interés para ser analizados. Explicar muy brevemente la razón y/o utilidad de tal selección." y en lo entregado no veo la razón o utilidad que puede representar crear cada una de estas data frames. La idea de este curso es desarrollar capacidades analíticas, particular en el que siempre haré énfasis.
+
+Me envíaste dos veces la "clase 8 tarea 4" con partes distintas. Creo que es recomendable facilitar las correcciones, en este caso a mi, o haciendo un solo archivo qmd con todas las respuestas o dividiendo de forma clara las partes.
+
+Al revisar el material me parece que no está incluido el requerimiento:
+
+"3) Construir lista con los siguientes elementos:
+
+a\) nombre países
+
+b\) pib promedio de todos los paises, en todos los periodos
+
+por continente (son 5 valores)."
+
+Si me estoy equivocando, por favor me avisas para localizar en cuál de los cuatro archivos está lo indicado.

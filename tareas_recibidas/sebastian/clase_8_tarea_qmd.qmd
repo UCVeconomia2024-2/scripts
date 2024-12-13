@@ -1,0 +1,142 @@
+---
+title: "clase_8_tarea"
+author: "Sebastian Rodriguez"
+format: html
+editor: visual
+fechas: 2024_11_27
+---
+
+## Tarea clase 8
+
+# 1) Vector con países que están en el primer cuantil de la DF según el PIB
+
+```{r}
+# primero debemos Cargar los paquetes necesarios
+library(dplyr)
+library(tidyverse)
+# si cargas tidyverse no hace falta cargar dplyr. En varias clases he comentado porque incluí la carga de los dos paquetes, estando relacionado con la cantidad de recursos que pueda tener su computador, y así dando la opción de no cargar tidyverse para no consumir tanta memoria.
+
+```
+
+```{r}
+# Importamos el conjunto de datos de Gapminder
+df_gapminder <- read.csv('https://raw.githubusercontent.com/javendaXgh/datos/refs/heads/master/gapminder.csv')
+
+```
+
+```{r}
+# Calculamos el primer cuartil del PIB
+primer_cuantil <- quantile(df_gapminder$gdpPercap, 0.25)
+
+```
+
+```{r}
+# Filtramos los países que están en el primer cuartil
+paises_primer_cuantil <- df_gapminder %>%
+  filter(gdpPercap <= primer_cuantil) %>%
+  select(country,gdpPercap)
+
+```
+
+```{r}
+# Asignamos a una variable
+vector_paises_primer_cuantil <- unique(paises_primer_cuantil$country)
+```
+
+```{r}
+# Finalmente mostramos el vector
+vector_paises_primer_cuantil
+```
+
+Bien!
+
+# 2) Promedio del Pib percapita de Argentina para todos los períodos disponibles
+
+```{r}
+# primero debemos filtrar los datos para Argentina
+df_argentina <- df_gapminder %>%
+  filter(country == 'Argentina')
+```
+
+```{r}
+# despues calculamos el promedio del PIB per capita
+promedio_gdp_argentina <- mean(df_argentina$gdpPercap)
+
+```
+
+```{r}
+# Mostrar el promedio
+promedio_gdp_argentina
+```
+
+Bien!
+
+# 3) Construir lista con los siguientes elementos:
+
+# a) nombre países
+
+# b) pib promedio de todos los paises, en todos los periodos
+
+# por continente (son 5 valores)
+
+```{r}
+# calculamos el PIB promedio por continente
+pib_promedio_continente <- df_gapminder %>%
+  group_by(continent) %>%
+  summarise(pib_promedio = mean(gdpPercap))
+```
+
+```{r}
+# se crea una lista con los nombres de los países y el PIB promedio por continente
+lista_resultados <- list(
+  nombres_paises = unique(df_gapminder$country),
+  pib_promedio_por_continente = pib_promedio_continente
+)
+```
+
+```{r}
+# Mostrar la lista
+lista_resultados
+```
+
+Ok. está bien logrado, no obstante la idea hubiese sido tenerlo listo al momento solicitado ya que al haber conversado sobre esto en clase, posterior a la fecha de entrega, tienes una ventaja en comparación a tus compañeros.
+
+# 4) Gráfico de Pib percapita de Venezuela en todos los períodos disponibles (usar RBase),
+
+# colocar `labels` en los ejes. Revisar documentación de función `plot`, proponer e
+
+# implementar mejoras al gráfico con el argumento `type` y cualquier otro que estime
+
+# conveniente
+
+```{r}
+# filtramos los datos para Venezuela
+df_venezuela <- df_gapminder %>%
+  filter(country == 'Venezuela')
+
+# luego creamos el gráfico de PIB per cápita
+plot(df_venezuela$year, df_venezuela$gdpPercap,
+     type = 'o', # 'o' para líneas con puntos
+     col = 'blue', # Color de la línea
+     pch = 16, # Tipo de punto
+     xlab = 'Año', # Etiqueta del eje x
+     ylab = 'PIB per cápita', # Etiqueta del eje y
+     main = 'PIB per cápita de Venezuela a lo largo del tiempo', # Título del gráfico
+     xaxt = 'n') # Evitar etiquetas en el eje x para personalizar
+
+# Personalizar el eje x
+axis(1, at = df_venezuela$year, labels = df_venezuela$year)
+
+# Agregar una cuadrícula
+grid()
+
+
+```
+
+Está bonito el gráfico. Bien!
+
+-------
+
+Faltó la parte 5 de la tarea
+
+Observaciones generales. Cuida el formato en el qmd ya que tú estás interesado en generar reportes. Hay varios textos que los tienes como headers o títulos y no es estético no funcional. si quieres luego me recuerdas en clase para conversarlo

@@ -1,0 +1,228 @@
+---
+title: "Tarea_8_Datos_Gapminder"
+author: "Nayuha_Palenzuela"
+format: html
+editor: visual
+date:  "Noviembre 20, 2024"
+---
+
+## 1- Vector con países que están en el primer cuartil de la DF según el PIB
+
+#### Creación de una nueva columna en la cual se expresa el PIB Total
+
+```{r}
+library(tidyverse)
+library(gapminder)
+
+df_gapminder <- gapminder::gapminder
+df_gap_gdp_1 <- df_gapminder %>% 
+  select(country,
+         gdpPercap,
+         pop)%>%
+  mutate(PIB_total=gdpPercap*pop)
+
+
+# Comprobamos que la nueva columna creada para visualizar el PIB_total 
+# aparezca en nuestra nueva df.
+
+head(df_gap_gdp_1)
+
+
+```
+
+```{r}
+
+# Revisamos summary
+
+summary(df_gap_gdp_1)
+```
+
+```{r}
+
+# Buscamos el primer cuartil 
+
+primer_cuartil <- quantile(df_gap_gdp_1$PIB_total,0.25)
+
+
+# Filtramos por paises para el primer cuartil 
+primer_cuartil_paises <- unique(df_gap_gdp_1$country[
+  df_gap_gdp_1$PIB_total<=primer_cuartil])
+
+# Revisamos el resultado de lo que se hizo
+primer_cuartil_paises
+```
+
+```{r}
+# Buscamos el primer cuartil 
+
+primer_cuartil_1 <- quantile(df_gap_gdp_1$PIB_total,0.25)
+
+# Filtramos por paises para el primer cuartil 
+primer_cuartil_pib_total_1 <- unique(df_gap_gdp_1$PIB_total[
+  df_gap_gdp_1$PIB_total<=primer_cuartil])
+
+# Revisamos el resultado de lo que se hizo
+primer_cuartil_pib_total_1 
+```
+
+```{r}
+
+library(skimr)
+
+datos_sumario <-skim(gapminder)
+
+datos_sumario$numeric.p25
+datos_sumario$numeric.p50
+datos_sumario$numeric.p75
+
+```
+
+## 2- Promedio del Pib percapita de Argentina para todos los períodos disponibles
+
+```{r}
+
+# filtramos la información de Argentina con el by operator 
+
+datos_de_argentina <- df_gapminder%>%
+  filter(country== "Argentina")
+
+head(datos_de_argentina)
+
+promedio_argentina_gdpPercap <-mean(datos_de_argentina$gdpPercap, na.rm = TRUE)
+
+promedio_argentina_gdpPercap
+```
+
+## 3- Construcción de listas
+
+#### 3.1 Nombre de países
+
+```{r}
+
+nombre_de_paises <- unique(gapminder$country)
+
+head(nombre_de_paises)
+
+print(nombre_de_paises)
+```
+
+#### 3.2 PIB promedio por continente
+
+```{r}
+pib_promedio_por_continente <- gapminder%>%
+  group_by(continent)%>%
+  summarise(pib_promedio = mean(gdpPercap,
+                                na.rm = TRUE))
+
+
+```
+
+#### 3.3 Creación de la lista
+
+```{r}
+lista_pais_y_pibperc <- list(
+  nombre_de_paises = nombre_de_paises,
+  pib_promedio_por_continente = pib_promedio_por_continente
+)
+
+
+
+lista_pais_y_pibperc
+```
+
+## 4- Gráfico del PIB Percapita de Venezuela
+
+```{r}
+
+datos_de_venezuela <- df_gapminder %>%
+  filter(country == "Venezuela")
+
+plot(datos_de_venezuela$year, 
+     datos_de_venezuela$gdpPercap,
+     type = "b",
+     col = "red3",
+     pch = 19,
+     lwd = 2,
+     xlab = "Año",
+     ylab = "PIB per cápita (USD)",
+     main = "Evolución del PIB per cápita de Venezuela")
+
+
+# type, sirve para el tipo de gráfico linea y punto
+# col, da el color del gráfico.
+# pch, dependiendo del numero es el tipo de marcador de puntos
+# lwd, el grosor de la línea.
+```
+
+## 5- DF derivadas de Gapminder
+
+### 5.1 Países con alto PIB per cápita
+
+```{r}
+
+# creacion del cuartil 75
+pib_p75 <- quantile(df_gapminder$gdpPercap, 0.75, na.rm = TRUE)
+
+
+# creacion de la df 
+df_alto_gdpPercap <- df_gapminder %>%
+  group_by(country) %>%
+  summarise(pib_promedio_por_continente = mean(gdpPercap, na.rm = TRUE))%>%
+  filter(pib_promedio_por_continente>pib_p75)
+
+df_alto_gdpPercap
+
+```
+
+Con el PIB per cápita podemos visualizar cuales son los países con un alto potencial económico, mididendo la riqueza o el desarrolo económico de estos, con esta DF, podemos ordenar la información con con los paises de mayor riqueza que forman parte del cuartil 75.
+
+### 5.2 Crecimiento demográfico
+
+```{r}
+
+df_crecimiento_demografico <- df_gapminder %>%
+  group_by(country) %>% 
+  summarise(
+    crecimiento_poblacional = (last(pop)-first(pop))/first(pop)*100
+  )
+
+df_crecimiento_demografico
+```
+
+Con esta DF podemos la información de la tasa de crecimiento poblacional expresada de forma porcentual, la cual contiene información de 142 paises
+
+### 5.3 Relación entre la población y el PIB
+
+```{r}
+
+df_poblacion_pib <- df_gapminder %>%
+  group_by(continent) %>%
+  summarise(
+    poblacion_total = sum(pop, na.rm = TRUE),
+    pib_total = sum(gdpPercap*pop, na.rm = TRUE)
+  )
+
+df_poblacion_pib
+```
+
+Con esta DF podemos observar la población total que hay en cada uno de los continentes y el PIB total correspondiente.
+
+### 5.4 Países con baja esperanza de vida
+
+```{r}
+
+esperanza_p25 <- quantile(df_gapminder$lifeExp, 0.25, na.rm = TRUE)
+
+df_baja_esperanza <- df_gapminder %>%
+  group_by(country) %>%
+  summarise(esperanza_promedio = mean(lifeExp, na.rm = TRUE)) %>%
+  filter(esperanza_promedio<esperanza_p25)
+
+df_baja_esperanza
+```
+
+Con esta DF podemos observar los países que tienen una menor calidad de vida.
+
+SUUUUUPPPPER BIEN. Mil Felicitaciones para ti. Me alegró mucho ver tu propuesta. Fue la última y me dejó muy contento ver tus avances. Te felicito sinceramente!!!
+
+No tengo ninguna observación que hacer, y si la había, se me escapó

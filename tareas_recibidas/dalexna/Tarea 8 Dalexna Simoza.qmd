@@ -1,0 +1,89 @@
+---
+title: "tarea-8 Dalexna Simoza"
+author: "Dalexna Simoza"
+format: html
+editor: visual
+---
+
+## #1) Vector con países que están en el primer cuantil de la DF según el PIB.
+
+#para realizar esta tarea debemos importar las siguientes librerías
+
+```{r}
+#llamo las librerias correspondientes 
+library(readxl)
+```
+
+```{r}
+
+library(gapminder)
+```
+
+```{r}
+
+library(dplyr)
+```
+
+```{r}
+library(tidyverse)
+```
+
+```{r}
+library(stringr)
+
+```
+
+```{r}
+#luego voy a proceder a leer mi archivo de excel 
+#data_gapminde <- read_excel("gaminder.xlsx")
+data_gapminde <- gapminder::gapminder
+```
+
+```{r}
+# Se crea nueva columna para generar el valor PIB y visualizo si se creo
+dta_gapminde_pib <- data_gapminde%>%
+   mutate(pib= gdpPercap* pop)%>%
+    select(country, year, pib)
+
+head(dta_gapminde_pib, 3)
+```
+
+```{r}
+#procedo a buscar el cuartil y selecciono los 5 paises q voy a usar para mostrarlos 
+primer_cuantil <- quantile(dta_gapminde_pib$pib, 0.25)
+paises_primer_cuantil <- dta_gapminde_pib%>% 
+  filter(pib <= primer_cuantil)%>% 
+  select(country)%>%
+  distinct() %>%
+
+head(5)
+
+print(paises_primer_cuantil)
+
+### Observaciones sobre este chunk
+# El objeto que creaeste en paises_primer_cuantil es una "tbl_df"
+class(paises_primer_cuantil)
+
+# eso quiere decir que era necesario usar al final la función pull para extraer un objeto de tipo character.vector. por ejemplo
+
+# otro detalle es que incorporaste el pipe al usar de último la función head, es decir, estas encadenando todo el proceso donde al final solo extráes una data frame con 5 observaciones o filas, cuando el ejercicio lo que pide es un vector con los nombres de los países en el primer cuartil.
+
+# la función head se usa principalmente para inspeccionar una dataframe y no para incorporarla en un procesamiento de datos. Lo que sigue es una de las formas en que hubieses podido hacer el ejercicio
+
+paises_primer_cuantil <- dta_gapminde_pib%>% 
+  filter(pib <= primer_cuantil)%>% 
+  select(country)%>%
+  distinct() %>%
+  pull(country)
+
+paises_primer_cuantil
+
+```
+
+Observaciones Generales:
+
+Si cargas el paquete tidyverse no hace falta cargar adicionalmente `dplyr` ni tampoco `stringr`
+
+Adicionalmente, en este ejemplo no estas usando `stringr` y no hace falta cargarlo
+
+Creaste 5 chunks para cargar las librerías. Con uno solo basta. La idea de un chunk inicial es que cargues las librerías y datos. Los otros chunks deben ser para generar salidas a mostrar en el reporte, o procesos intermedios que vas a necesitar llamar posteriormente

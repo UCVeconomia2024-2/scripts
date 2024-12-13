@@ -1,0 +1,39 @@
+---
+title: "tarea clase 8 part 2"
+author: "Dalexna Simoza"
+format: html
+editor: visual
+---
+
+#Promedio del Pib percapita de Argentina para todos los períodos disponibles
+
+```{r}
+#cargar librerias
+library(readxl)
+library(gapminder)
+library(dplyr)
+library(tidyverse)
+library(stringr)
+
+```
+
+```{r}
+#cargo la dataframe
+data_gapminde <- read_excel("gaminder.xlsx")
+
+
+```
+
+```{r}
+#creamos las variables y buscamos el promedio 
+datos_argt <- gapminder %>%
+  filter(country == "Argentina")
+promedio_pib_argentina <- mean(datos_argt$gdpPercap)
+print(promedio_pib_argentina)
+```
+
+Está mejor en esta forma comparado a la primera parte. El ejercicio está bien realizado.
+
+En la primera línea no hacía falta el numeral en "#Promedio del Pib percapita de Argentina para todos los períodos disponibles". Esto te lo comento ya que los numerales, en lo que se llama formato mark down, son interpretados como marcas para generar títulos o headers. Si el numeral está fuera de un chunk y adicionalmente está al inicio de una línea, es interpretado por el sistema, como que estás escribiendo un título e incrementa el tamaño de la letra. en este caso no te lo muestra en el render como título ya que no le sigue un espacio con el texto , por ejemplo,
+
+"\# Promedio del Pib percapita "

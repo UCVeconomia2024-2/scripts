@@ -1,0 +1,43 @@
+---
+title: "tarea8 parte 4"
+author: "Dalexna Simoza"
+format: html
+editor: visual
+---
+
+#Gráfico de Pib percapita de Venezuela en todos los períodos disponibles (usar RBase), \# colocar `labels` en los ejes. Revisar documentación de función `plot`, proponer e \# implementar mejoras al gráfico con el argumento `type` y cualquier otro que estime \# conveniente
+
+```{r}
+#Cargar librerias
+library(gapminder)
+library(readxl)
+```
+
+```{r}
+#cargo la dataframe
+data_gapminde <- read_excel("gaminder.xlsx")
+
+```
+
+```{r}
+venezuela_pibpc <- subset(data_gapminde, country == "Venezuela")
+# no comprendo, si estamos usando una serie de funciones, como filter, que las usaste en todos los ejercicios anteriores, por qué tienes que usar esta otra función que no la hemos visto, y no se adapta a lo que queremos hacer. 
+# Imagino que buscaste materiales externos al curso, cosa en la que no tengo problema, pero si estoy enseñando un estilo, adaptado a unos estándares e incorporas algo distinto para hacer un proceso tan elemental como un filtrado, me deja muy preocupado porque creo que no se están comprendiendo en lo más mínimo para qué sirve lo que revisamos en clase y estudiamos
+```
+
+```{r}
+plot(venezuela_pibpc$year, venezuela_pibpc$gdpPercap,
+     type = "b",
+     col = "pink",
+     pch = 19, 
+     xlab = "year", 
+     ylab = "gdpPercap", 
+     main ="PIB per cápita de Venezuela (1952-2007)")
+lines(lowess(venezuela_pibpc$year, venezuela_pibpc$gdpPercap), col = "black")
+```
+
+Interesante el gráfico. Por favor, me puedes comentar para qué sirve lo que hiciste en este paso:
+
+¿ "lines(lowess(venezuela_pibpc$year, venezuela_pibpc$gdpPercap), col = "black")" ?
+
+y adicionalmente, es recomendable que indiques en la leyenda del gráfico qué representa la línea que tiene color negro que es justamente la que incorporaste.

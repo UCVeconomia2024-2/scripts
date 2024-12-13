@@ -1,0 +1,264 @@
+---
+title: 'Clase 6 / Práctica 1'
+author: "Luis......."
+output:
+  html_document:
+    toc: yes
+    code_folding: show
+---
+
+Observaciones:
+
+Añadir campo `author` al yml 👆🏽
+
+## Ejercicios Prácticos
+
+### 1. Creación de Archivos con Comentarios
+
+#### Ejercicio 1.1
+
+Para crear un comentario en una línea de código se usa el signo numeral al inicio de la línea. Esto le indica a R que esa línea la debe ignorar a la hora de ejecutar el código.
+
+Crea un archivo de texto llamado "mi_primer_archivo.R" con una línea comentada que diga "Este es mi primer archivo en R". Verifica en la sección derecha de RStudio, en la tab "files", la ruta donde estás guardando el archivo
+
+### 2. Instalación de Paquetes
+
+#### Ejercicio 2.1
+
+Instala los paquetes `dplyr` y `stringr`.
+
+```{r}
+# descomentar línea de abajo (quitar numeral)
+
+#install.packages('dplyr')
+#install.packages('stringr')
+```
+
+#### Ejercicio 2.2.
+
+Carga los paquetes instalados
+
+```{r}
+library(dplyr)
+library(stringr)
+```
+
+### 3. Creación de Vectores
+
+**Introducción:**
+
+-   **¿Qué es un vector?** Un vector es una secuencia de elementos del mismo tipo. En R, los vectores pueden contener números, caracteres, valores lógicos, fechas, y más.
+
+-   **¿Cómo crear un vector?** Se utiliza la función `c()` para combinar elementos en un vector.
+
+-   Variables: es similar a una caja con un nombre, donde guardamos información que puede cambiar. En programación, usamos variables para almacenar datos que necesitamos más tarde.
+
+-   Operador de asignación: El operador `<-` es como una flecha que apunta desde el valor hacia la caja, indicando que el valor de la derecha se asigna a la variable de la izquierda.
+
+**Ejemplos Completos:**
+
+```{r}
+# Vector numérico
+numeros <- c(1, 2, 3, 4, 5)
+# la variable se llama numeros y su contenido es 1, 2, 3, 4, 5
+
+```
+
+```{r}
+# Vector de caracteres
+dias_semana <- c("lunes", "martes", "miércoles", "jueves", "viernes", "sábado", "domingo")
+
+# la variable se llama dias_semana y su contenido es "lunes", "martes",....
+# prestar atención a comillas al inicio y final de cada día de la semana
+```
+
+```{r}
+# Vector lógico
+mayores_edad <- c(TRUE, FALSE, TRUE)
+# la variable se llama mayores_edad y tiene asignado los valores TRUE, FALSE,TRUE 
+# importante: los valores lógicos no van entre comillas
+
+```
+
+```{r}
+# vectores con la fecha
+fechas_nacimiento <- c('2010-01-01', "2005-06-10",'1999-10-31')
+
+# prestar atención al uso de comillas simples y dobles
+```
+
+### Llamado a variables creadas
+
+Los chunks anteriores tienen que haber sido ejecutados. Es ideal que los códigos se ejecuten secuencialmente dentro de un *script*.
+
+```{r}
+print(numeros)
+```
+
+```{r}
+print(mayores_edad)
+```
+
+```{r}
+print(dias_semana)
+```
+
+```{r}
+print(fechas_nacimiento)
+```
+
+### **Ejercicios para corregir:**
+
+```{r}
+# descomentar línea de abajo (quitar numeral)
+numeros_pares <- c(2, 4, 6, 8, 10)
+```
+
+```{r}
+# descomentar línea de abajo (quitar numeral)
+ mis_frutas <- c("manzana", "banana", 'uva')
+```
+
+```{r}
+# descomentar línea de abajo (quitar numeral)
+mayor_que_cinco <- c(6, 8, 10)
+
+```
+
+### Ejercicios para realizar en aula:
+
+1.  **Crear un vector numérico:**
+
+    Para añadir un chunk de código se debe presionar el botón verde en la barra de herramientas ![](/images/laboratorios/chunk.png)
+
+    Para cada uno de los ejercicios indicados se debe añadir un chunk distinto repitiendo el procedimiento
+
+    -   Con los números pares del 2 al 10.
+
+    -   Con los números impares del 1 al 9.
+
+```{r}
+numeros_pares <- c(2, 4, 6, 8, 10)
+# puedes usar la función seq
+
+
+numeros_impares <- c(1,3,5,7,9)
+# también pudiésemos crear estos vectores con la función seq
+seq(from=2, to= 10, by=2)
+seq(from=1, to=10, by=2)
+```
+
+2.  \#**Crear un vector de caracteres**
+
+    -   #Con el nombre de la Facultad y de la Universidad.
+
+    -   #Con los nombres de los tres primeros meses del_año.
+
+```{r}
+faces_ucv <- c("Facultad_de_ciencias_economicas_y_sociales",
+             "Universidad_Central_de_Venezuela")
+Meses_del_ano<-c("enero","febrero","marzo")
+
+# es recomendable que llames a las variables creadas para verificar que fueron creadas correctamente
+faces_ucv
+Meses_del_ano
+
+```
+
+```{r}
+3.  **Crear_un_vector_lógico**
+
+    -   #Indicando si cada número del 1 al 5 es mayor que 3.
+
+    -  #Indicando si cada letra de la palabra 'banana' es una 'a'.
+ 
+4.  **Crear_un_vector_de_fechas**
+
+    -   #Del primer día y último día de tres meses de el año que prefieras.
+```
+
+```{r}
+#Creación de Vectores Logicos
+
+    -  #Indicando si cada numero del 1 al 5 es mayor que 3.
+  numeros <- c(1:5)
+
+    - #Comparamos cada numero con el 3 y creamos el vector logico
+  
+  vector_logico <- numeros > 3
+  
+  print(vector_logico)
+
+    -  #Indicando si cada letra de la palabra 'banana' es una 'a'.
+  
+vector_banana <- c(FALSE,TRUE,FALSE,TRUE,FALSE,TRUE)
+  
+  # Creamos un vector con las fechas de inicio y fin de cada mes
+fechas <- c(ymd("2023-01-01"), ymd("2023-01-31"), 
+            ymd("2023-05-01"), ymd("2023-05-31"),
+            ymd("2023-09-01"), ymd("2023-09-30"))
+
+# Creamos un vector lógico para identificar el primer y último día de cada mes
+es_primer_o_ultimo_dia <- fechas %in% c(ymd("2023-01-01"), ymd("2023-01-31"),
+                                      ymd("2023-05-01"), ymd("2023-05-31"),
+                                      ymd("2023-09-01"), ymd("2023-09-30"))
+print(es_primer_o_ultimo_dia)
+
+
+
+
+```
+
+## Varios detalles:
+
+1\) revisa el indentado
+
+#2) antes de los asteriscos de comentarios en los chunks de codigos colocaste un signo menos y eso genera un problema en todo el chunk haciendo inviable ejecutarlo. Hace unos días les había pasado, creo que por whtasapp, un mensaje con estas recomendaciones:
+
+"Algunas recomendaciones generales, basadas en las correcciones.
+
+1\. Si van a hacer el render de todo el qmd, no incluyan la función View para ningún objeto ya que no son compatibles
+
+2\. En la barra de herramientas: en Tools/Global Options/Spelling verifiquen que tienen el idioma español configurado. Eso les ayudará a corregir la ortografía en los qmd con un "abc" que aparece dos casillas antes del ícono del render.
+
+3\. Siempre que trabajen un chunk de código o un script, verifiquen las salidas cuando crean un objeto para que verifiquen que coincide, o tiene la estructura de lo que están tratando de hacer.
+
+4\. Si están trabajando un qmd, es recomendable trabajar en un script en paralelo para que vean las salidas y los procesos. Luego, cuando todo esté listo, le dan forma al qmd y a los chunks de códigos
+
+5\. Al trabajar el render del qmd, es necesario que en el qmd esté definido la carga de todos los objetos, por ejemplo, hacer la lectura del archivo de excel. El qmd cuando se le hace el render tiene su propio environment y lo que no quede definido dentro del propio archivo, no permitirá generarlo y dará un error. Si la variable equis, existe en su espacio de trabajo (environment) pero no queda definida en los chunks que componen el qmd, no será viable hacer el render. Esto es en procura de lograr la reproducibilidad."
+
+Creo que no atendiste ninguna de las sugerencias ni me preguntaste cómo podías subsanar los posibles errores que se te presentaran. Por lo tanto, el chunks anterior no se puede ejecutar
+
+En el vector
+
+```{r}
+vector_banana <- c(FALSE,TRUE,FALSE,TRUE,FALSE,TRUE)
+```
+
+la idea era hacer algo similar a esto
+
+```{r}
+c('b','a','n','a','n','a')=='a'
+```
+
+Dado que el requerimiento indicaba Crear_un_vector_lógico Indicando si cada letra de la palabra 'banana' es una 'a'.
+
+En cuanto a este vector
+
+```{r}
+  # Creamos un vector con las fechas de inicio y fin de cada mes
+fechas <- c(ymd("2023-01-01"), ymd("2023-01-31"), 
+            ymd("2023-05-01"), ymd("2023-05-31"),
+            ymd("2023-09-01"), ymd("2023-09-30"))
+```
+
+si tratas de ejecutar el código te va a indicar que no existe la función `ymd` por lo tanto no es factible usar el procedimiento planteado
+
+y la última parte que indicas, a continuación no estaba solicitada y no entiendo qué buscabas hacer
+
+```{r}
+# Creamos un vector lógico para identificar el primer y último día de cada mes
+es_primer_o_ultimo_dia <- fechas %in% c(ymd("2023-01-01"), ymd("2023-01-31"),
+                                      ymd("2023-05-01"), ymd("2023-05-31"),
+                                      ymd("2023-09-01"), ymd("2023-09-30"))
+```

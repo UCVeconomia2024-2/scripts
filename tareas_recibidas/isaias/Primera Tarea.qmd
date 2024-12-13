@@ -4,7 +4,6 @@ format: html
 editor: visual
 author: "Isaias De Ascencao"
 date: "Noviembre 17, 2024"
----x<
 ---
 
 ```{r}

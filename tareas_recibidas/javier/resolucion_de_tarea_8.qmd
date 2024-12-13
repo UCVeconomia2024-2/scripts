@@ -1,0 +1,172 @@
+---
+title: "Tarea_4"
+author: "Javier melendez"
+format: html
+editor: visual
+---
+
+```{r}
+#Carga de paquete readxl
+library(tidyverse)
+library(readxl)
+#Carga de datos gaominder
+#df_gapminder <- read_excel("Clase_de_R/Datos_de_exel/gapminder.xlsx")
+df_gapminder <- gapminder::gapminder
+```
+
+# 1 primer cuartil según el PIB per cápita
+
+```{r}
+#Calculo del primer cuartil del PIB per capita
+cuartil_uno <- quantile(df_gapminder$gdpPercap, probs = 0.25)
+#Se aplicó un filtro cuartílico para identificar y apartar los países que se encuentran en el 25% inferior en términos de PIB per cápita.
+paises_de_primer_cuartil <- df_gapminder %>%
+  filter(gdpPercap <= cuartil_uno) %>%
+  pull(country)
+
+paises_de_primer_cuartil
+```
+
+Acá faltó que no se repitan los valores, por ejemplo usando la función unique si tienes un vector, o distinct si estás dentro del objeto de la data frame
+
+```{r}
+unique(paises_de_primer_cuartil)
+
+# o
+df_gapminder %>%
+  filter(gdpPercap <= cuartil_uno) %>%
+  distinct(country)%>%
+  pull(country)
+
+```
+
+# 2 Promedio del PIB per cápita de Argentina
+
+```{r}
+#Calculo del promedio del PIB per capita
+promedio_pib_argentina <- df_gapminder %>%
+  filter(country == "Argentina") %>%
+  summarize(promedio_pib = mean(gdpPercap)) %>%
+  pull(promedio_pib)
+promedio_pib_argentina
+```
+Ok
+
+
+
+# 3 Lista con países y PIB promedio por continente
+
+```{r}
+# Promedio del PIB por continente
+pib_promedio_continentes <- df_gapminder %>%
+  group_by(continent) %>%
+  summarize(promedio_pib = mean(gdpPercap), .groups = "drop") %>%
+  pull(promedio_pib)
+
+# Lista de países únicos
+lista_paises <- df_gapminder %>%
+  pull(country) %>%
+  unique()
+
+# Creación de la lista solicitada
+lista_solicitada <- list(
+  paises = lista_paises,
+  pib_promedio_continentes = pib_promedio_continentes
+)
+
+lista_solicitada
+```
+
+Muy BIEN!!!!!!
+
+# 4 Gráfico de PIB per cápita de Venezuel
+
+```{r}
+# Filtrar datos de Venezuela
+Venezuela <- df_gapminder %>%
+  filter(country == "Venezuela") %>%
+  select(year, gdpPercap)
+
+# Para mejor el grafico se configuración del fondo y gráfico
+par(bg = "lightblue") # Cambia el fondo del gráfico a azul claro
+plot(
+  Venezuela$year, Venezuela$gdpPercap,
+  type = "b",                 # Línea con puntos
+  col = "darkred",            # Color de línea y puntos
+  lwd = 2,                    # Grosor de la línea
+  pch = 19,                   # Forma de los puntos (círculos sólidos)
+  cex = 1.5,                  # Tamaño de los puntos
+  xlab = "Año",               # Etiqueta del eje X
+  ylab = "PIB per cápita",    # Etiqueta del eje y
+  main = "Evolución del PIB per cápita en Venezuela",
+  col.main = "darkblue",      # Color del título
+  col.lab = "darkgreen"       # Color de las etiquetas de los ejes
+)
+
+# Leyenda para el gráfico
+legend(
+  "topright",
+  legend = "PIB per cápita",
+  col = "darkred",
+  lty = 1, lwd = 2, pch = 19, bg = "white"
+)
+
+```
+
+Muy Bien!!!!
+
+# **5. Cuatro DataFrames derivados**
+
+## **a) Crecimiento del PIB per cápita y población en China**
+
+```{r}
+df_china <- df_gapminder %>%
+  filter(country == "China") %>%
+  select(country, year, pop, gdpPercap)
+
+df_china
+```
+
+## b) Relación entre la esperanza de vida y población en los paises del continente asiático
+
+```{r}
+df_asia <- df_gapminder %>%
+  filter(continent == "Asia") %>%
+  select(country, year, lifeExp, pop)
+
+df_asia
+```
+No creo que sea correcto hablar de "relación" sino datos para buscar explorar relaciones entre la esper....... ya que no estamos usando ningún método que permita estudiar tal fenómeno
+
+## c) Análisis de los 10 paises con mayor PIB per cápita
+
+```{r}
+df_10_pib <- df_gapminder %>%
+  arrange(desc(gdpPercap)) %>%
+  slice_head(n = 10) %>%
+  select(country, year, gdpPercap)
+# se uso arrange(desc(gdpPercap)) porque permite ordena los datos de forma descendente (desc) por la columna gdpPercap
+# y se aplico slice_head(n = 10) porque selecciona las primeras 10 filas después de haber ordenado los datos. Esto te da los 10 países con el mayor PIB per cápita
+
+df_10_pib
+```
+Más que los 10 países estás es aislando los pib per cápita más altos detectados en el conjunto de datos ya que lo que se muestran son sólo 3 países en ese top 10 de gdpPercap. 
+
+## 4) Tendencia de la esperanza de vida en África durante las últimas décadas
+
+```{r}
+# df_africa_life_exp <- df_gapminder %>%
+#   filter(continent == "Africa") %>%
+#   select(country, year, lifeExp) %>%
+#   group_by(country) %>%
+#   filter(year == (year), ) %>%
+#   ungroup()vi
+# Se uso ungroup() porque Permite elimina la agrupación previa, lo que asegura que el resultado final no esté agrupado
+```
+Esta última df parece que se te cambió algo al momento de guardar el archivo. Por favor revisa qué pasó ya que estas dos líneas
+#   filter(year == (year), ) %>%
+#   ungroup()vi 
+tienen una sintaxis que no cuadra, pero imagino que fue que algo se te modificó y no te percataste
+
+
+Llamar a las variables que muestran los resultados para corroborar que lo generado se corresponde con lo deseado

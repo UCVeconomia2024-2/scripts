@@ -1,0 +1,32 @@
+---
+title: "Tarea clase 7"
+author: "Gustavo Chacon"
+format: html
+editor: visual
+---
+
+# funcion
+
+calcular_elasticidad_precio \<- function(precio, cantidad) { \# Calculamos el cambio porcentual en P y Q
+
+cambio_precio \<- diff(precio) / precio\[-length(precio)\] cambio_cantidad \<- diff(cantidad) / cantidad\[-length(cantidad)\]
+
+\# Calculamos la elasticidad elasticidad \<- cambio_cantidad / cambio_precio
+
+return(elasticidad) }
+
+# Ejemplo
+
+precio_camisas \<- c(5, 10, 15, 20) cantidad_camisas \<- c(200, 180, 150, 100)
+
+# Calculamos la elasticidad precio de la demanda
+
+elasticidad_camisas \<- calcular_elasticidad_precio(precio_camisas, cantidad_camisas)
+
+# Imprimimos los resultados
+
+print(elasticidad_camisas)
+
+# Interpretacion: es un bien normal con una demanda inelastica en los primeros dos puntos, aunque con una demanda unitaria en el tercero
+
+Observaciones: no resulta viable ejecutar ningún chunk de código en este archivo. Lo que está remitiendo no se ajusta a las pautas vistas a lo largo de todas las clases.

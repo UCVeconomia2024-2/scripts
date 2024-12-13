@@ -1,0 +1,28 @@
+---
+title: "Practica 2"
+author: "Gustavo Chacon"
+format: html
+editor: visual
+---
+
+## función
+
+calculo_inflacion \<- function(precios_anterior, precios_actual){
+
+# Calculamos la inflación para cada artículo
+
+inflacion \<- ((precios_actual / precios_anterior) - 1) \* 100
+
+# Retornamos el valor
+
+return(inflacion) }
+
+calculo_inflacion(10, 14) calculo_inflacion(12, 9) calcular_pib_per_capita \<- function(pib_total, poblacion)
+
+# Calculamos el PIB per cápita
+
+{ pib_per_capita \<- pib_total / poblacion
+
+return(pib_per_capita) } calcular_pib_per_capita(123000043, 24531)
+
+Observaciones: no resulta viable ejecutar ningún chunk de código en este archivo. Lo que está remitiendo no se ajusta a las pautas vistas a lo largo de todas las clases.

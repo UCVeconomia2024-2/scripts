@@ -1,0 +1,161 @@
+---
+title: "tarea_pendiente"
+
+author: "Gabriel Mendoza"
+date: "2024-11-18"
+
+format: html
+editor: visual
+---
+
+### Vector con países que están en el primer cuantil de la DF según el PIB
+
+```{r}
+library(scales)
+library(tidyverse)
+library(dbplyr)
+library(ggplot2)
+
+df_gapminder <- gapminder::gapminder
+paises_ler_cuartil <- df_gapminder %>%
+  group_by(country) %>%
+  summarize(promedios_paises_pibpercapita = mean(gdpPercap)) %>%
+  arrange(desc(promedios_paises_pibpercapita)) %>%
+  head(25) # esto está demás. 
+
+# varias:
+# No usar summarise. En clase vimos que es reframe
+# Seleccionar los primeros 25 países no es lo mismo al primer cuartil así que no aplica este método. El asunto iba más en usar la función quantile o lo calculabas según la definición de cuantil escribiendo la fórmula
+
+# En general, no debes aplicar ese head . Esa función se usa más es con la finalidad de inspeccionar una data frame. No para seleccionar observaciones. Para eso di un material donde ampliamente expuse la familia de funciones slice
+
+print(paises_ler_cuartil)
+
+```
+
+##Promedio del Pib percapita de Argentina para todos los períodos disponibles
+
+### Filtrar los datos para Argentina
+
+```{r}
+argentina_data <- df_gapminder %>%
+  filter(country == "Argentina")
+
+```
+
+###Calcular el promedio del PIB per cápita de Argentina
+
+```{r}
+promedio_pib_argentina <- mean(argentina_data$gdpPercap)
+
+print(promedio_pib_argentina)
+```
+
+## Construir lista con los siguientes elementos:
+
+### nombre países
+
+### pib promedio de todos los paises, en todos los periodos por continente (son 5 valores)
+
+### Agrupar por continente y calcular el PIB promedio
+
+```{r}
+paises_por_continente <- df_gapminder %>%
+  group_by(continent) %>%
+  summarize(pib_promedio = mean(gdpPercap))
+
+# pregunta: por qué si en clase estudiamos la función reframe decides usar summarise?
+# 
+
+
+resultados <- list(
+  paises = unique(df_gapminder$country),
+  pib_promedio_global = mean(df_gapminder$gdpPercap),
+  pib_promedio_por_continente = paises_por_continente
+)
+
+print(resultados)
+```
+
+Varias observaciones:
+
+\- usaste `summarise` que es una función que está descontinuada y es algo que mencioné en clase
+
+-   Requerimientos:
+
+    -   nombre países: ok
+
+    -   pib promedio de todos los paises, en todos los periodos por continente (son 5 valores): no se corresponde. Lo que se encuentra es una data frame y no los 5 valores, que se corresponden a un vector que hubieses podido obtener si hacías el subsetting `pib_promedio_por_continente$pib_promedio`
+
+# Gráfico de Pib percapita de Venezuela en todos los períodos disponibles
+
+```{r}
+
+venezuela_data <- df_gapminder %>%
+  filter(country == "Venezuela")
+
+ggplot(venezuela_data) +
+  aes(x = year, y = gdpPercap) +
+  geom_line(color = "darkblue", size = 1) +
+  geom_point(color = "darkblue", size = 2) + 
+  labs(title= "PIB PER CAPITA DE VENEZUELA") +
+  geom_smooth(method = "lm", formula = y ~ x, se = FALSE, color = "red") +
+  labs(x = "Año", y = "PIB per cápita") +
+  scale_y_continuous(labels = label_dollar()) +
+  theme_classic() + theme(plot.title = element_text(hjust = 0.5))
+```
+
+Está bien el gráfico, pero mucho de eso no lo hemos visto y por eso el requerimiento decía "usar rbase". Si comprendes lo que hace cada línea que indicas, con seguridad se te hará más fácil comprender lo que estaremos viendo a inicios de enero
+
+# Crear 4 DF's derivadas de Gapminder que contengan datos de interés para ser analizados
+
+## DataFrame para analizar la evolución del PIB per cápita en América Latina
+
+```{r}
+latam_gdp <- df_gapminder %>%
+  filter(continent == "Americas" & country != "canada" & country != "United States") %>%
+  select(country, year, gdpPercap)
+
+unique(latam_gdp$country)
+```
+
+Dentro de los países que están en la `latam_gdp` no aislaste a Canada. Por eso siempre es necesario verificar la salida de los datos generados.
+
+# 2. DataFrame para comparar la esperanza de vida al nacer entre países desarrollados y en desarrollo
+
+```{r}
+life_expectancy_comparison <- df_gapminder %>%
+  filter(year == 2007) %>%
+  select(country, continent, lifeExp) %>%
+  mutate(desarrollo = ifelse(continent %in% c("Europe", "North America"), "Desarrollado", "En desarrollo"))
+
+life_expectancy_comparison
+unique(df_gapminder$continent)
+```
+
+Está bien la idea, lo único es que "North America" no aparece dentro de los valores que se observan en el atributo Continent y el resultado obtenido no se corresponde a lo deseado
+
+# 3. DataFrame para analizar la relación entre la esperanza de vida y el gpdpercapita en africa
+
+```{r}
+africa_esperanza_vida_gpdpercapita <- df_gapminder %>%
+  filter(continent == "Africa") %>%
+  select(country, year, lifeExp, gdpPercap)
+
+africa_esperanza_vida_gpdpercapita
+
+```
+
+Ok
+
+# 4. DataFrame para estudiar la evolución de la población en Asia
+
+```{r}
+asia_population <- df_gapminder %>%
+  filter(continent == "Asia") %>%
+  select(country, year, pop)
+
+unique(asia_population$country)
+```
+
+Ok
