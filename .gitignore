@@ -9,3 +9,11 @@ borradores/
 *gitignore
 cronograma
 data_in_temp/
+test.qmd
+paquetes_*
+formato_g*
+GlobalL*
+
+cronograma.txt
+
+00*

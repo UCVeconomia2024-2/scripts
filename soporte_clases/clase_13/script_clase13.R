@@ -204,3 +204,28 @@ ggplot(data = df_venezuela_rl$data[[1]],
 df_rl_gapminder <- df_gapminder_csv%>%
   nest_by(country) %>% # función clave ya que anida los datos
   mutate(lm_result= list(lm(gdpPercap ~ lifeExp, data = data)))
+
+
+df_rl_gapminder <- df_gapminder_csv%>%
+  nest_by(country) %>% # función clave ya que anida los datos
+  mutate(lm_result= list(lm(gdpPercap ~ lifeExp, data = data)))
+
+
+
+df_gap_country <- df_gapminder_csv%>%
+  group_by(country) %>%
+  group_rows()
+
+
+# luego de realizar el agrupamiento acceder al elemento 5 
+# del país con índice 128 e indicar el número que aparece
+
+
+# hacerla para Argentina, Colombia
+ggplot(data = df_rl_gapminder$data[[2]], 
+       aes(x = gdpPercap, 
+           y = lifeExp)) + 
+  geom_point(color='blue') +
+  geom_smooth(method = "lm", 
+              se = TRUE, # intervalo de confianza
+              color='red')

@@ -12,7 +12,7 @@ rm(list= ls())
 ######## Cargar librerías                                                          #######
 ##########################################################################################
 library(tidyverse)
-
+library(lubridate)
 ##########################################################################################
 ########cheat sheets
 # https://evoldyn.gitlab.io/evomics-2018/ref-sheets/R_lubridate.pdf
@@ -39,7 +39,16 @@ dim(df_bcv_tw)
 View(df_bcv_tw%>%
        sample_n(100))
 
+summary(df_bcv_tw)
+df_bcv_tw1 <- df_bcv_tw%>%
+  mutate(created_at_date=as.POSIXct(created_at))%>%
+  # mutate(created_at2= ymd_hms(created_at))%>%
+  mutate(mes=month(created_at_date))%>%
+  mutate(dia_semana=wday(created_at_date))
 
+View(df_bcv_tw1)
+df_bcv_tw1$created_at[1]
+df_bcv_tw1$created_at_date[1]
 #### crear secuencia de fechas
 
 # Ejemplo promedio acciones
