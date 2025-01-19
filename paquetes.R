@@ -40,3 +40,14 @@ readr
 devtools
 usethis
 gitcreds
+
+
+#19-01-25
+JWileymisc
+skimr
+DataExplorer
+vioplot
+summarytools
+dataReporter
+visdat
+datasauRus
