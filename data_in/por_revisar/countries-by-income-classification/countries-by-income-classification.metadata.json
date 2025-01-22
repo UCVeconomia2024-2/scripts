@@ -1,0 +1,111 @@
+{
+  "chart": {
+    "title": "Countries by income classification",
+    "subtitle": "The World Bank's income classifications divide countries into four categories based on their gross national income (GNI) per capita. The GNI thresholds between income groups have changed over time.",
+    "citation": "World Bank (2024)",
+    "originalChartUrl": "https://ourworldindata.org/grapher/countries-by-income-classification?v=1&csvType=full&useColumnShortNames=false",
+    "selection": [
+      "World"
+    ]
+  },
+  "columns": {
+    "Number of high-income countries": {
+      "titleShort": "Number of high-income countries",
+      "titleLong": "Number of high-income countries",
+      "descriptionShort": "Number of countries classified as high income by the World Bank.",
+      "descriptionKey": [
+        "The World Bank creates a yearly classification of countries by income, for all countries with population over 30,000.",
+        "This classification stays the same throughout the fiscal year (from July 1 to June 30) even if the income data for a country changes.",
+        "Low-income countries are those with a gross national income (GNI) per capita of $1,145 or less in 2023.",
+        "Lower-middle-income countries are those with a GNI per capita between $1,146 and $4,515 in 2023.",
+        "Upper-middle-income countries are those with a GNI per capita between $4,516 and $14,005 in 2023.",
+        "High-income countries are those with a GNI per capita of more than $14,005 in 2023."
+      ],
+      "descriptionProcessing": "We count the countries in each income group and also calculate the total population in them by using a long-run dataset [mantained by Our World in Data](https://ourworldindata.org/population-sources).",
+      "unit": "",
+      "timespan": "1987-2023",
+      "type": "Integer",
+      "owidVariableId": 961267,
+      "shortName": "classification_high_income_countries_count",
+      "lastUpdated": "2024-07-29",
+      "nextUpdate": "2025-07-29",
+      "citationShort": "World Bank (2024) – with major processing by Our World in Data",
+      "citationLong": "World Bank (2024) – with major processing by Our World in Data. “Number of high-income countries” [dataset]. World Bank, “Income Classifications” [original data].",
+      "fullMetadata": "https://api.ourworldindata.org/v1/indicators/961267.metadata.json"
+    },
+    "Number of upper-middle-income countries": {
+      "titleShort": "Number of upper-middle-income countries",
+      "titleLong": "Number of upper-middle-income countries",
+      "descriptionShort": "Number of countries classified as upper-middle income by the World Bank.",
+      "descriptionKey": [
+        "The World Bank creates a yearly classification of countries by income, for all countries with population over 30,000.",
+        "This classification stays the same throughout the fiscal year (from July 1 to June 30) even if the income data for a country changes.",
+        "Low-income countries are those with a gross national income (GNI) per capita of $1,145 or less in 2023.",
+        "Lower-middle-income countries are those with a GNI per capita between $1,146 and $4,515 in 2023.",
+        "Upper-middle-income countries are those with a GNI per capita between $4,516 and $14,005 in 2023.",
+        "High-income countries are those with a GNI per capita of more than $14,005 in 2023."
+      ],
+      "descriptionProcessing": "We count the countries in each income group and also calculate the total population in them by using a long-run dataset [mantained by Our World in Data](https://ourworldindata.org/population-sources).",
+      "unit": "",
+      "timespan": "1987-2023",
+      "type": "Integer",
+      "owidVariableId": 961266,
+      "shortName": "classification_upper_middle_income_countries_count",
+      "lastUpdated": "2024-07-29",
+      "nextUpdate": "2025-07-29",
+      "citationShort": "World Bank (2024) – with major processing by Our World in Data",
+      "citationLong": "World Bank (2024) – with major processing by Our World in Data. “Number of upper-middle-income countries” [dataset]. World Bank, “Income Classifications” [original data].",
+      "fullMetadata": "https://api.ourworldindata.org/v1/indicators/961266.metadata.json"
+    },
+    "Number of lower-middle-income countries": {
+      "titleShort": "Number of lower-middle-income countries",
+      "titleLong": "Number of lower-middle-income countries",
+      "descriptionShort": "Number of countries classified as lower-middle income by the World Bank.",
+      "descriptionKey": [
+        "The World Bank creates a yearly classification of countries by income, for all countries with population over 30,000.",
+        "This classification stays the same throughout the fiscal year (from July 1 to June 30) even if the income data for a country changes.",
+        "Low-income countries are those with a gross national income (GNI) per capita of $1,145 or less in 2023.",
+        "Lower-middle-income countries are those with a GNI per capita between $1,146 and $4,515 in 2023.",
+        "Upper-middle-income countries are those with a GNI per capita between $4,516 and $14,005 in 2023.",
+        "High-income countries are those with a GNI per capita of more than $14,005 in 2023."
+      ],
+      "descriptionProcessing": "We count the countries in each income group and also calculate the total population in them by using a long-run dataset [mantained by Our World in Data](https://ourworldindata.org/population-sources).",
+      "unit": "",
+      "timespan": "1987-2023",
+      "type": "Integer",
+      "owidVariableId": 961265,
+      "shortName": "classification_lower_middle_income_countries_count",
+      "lastUpdated": "2024-07-29",
+      "nextUpdate": "2025-07-29",
+      "citationShort": "World Bank (2024) – with major processing by Our World in Data",
+      "citationLong": "World Bank (2024) – with major processing by Our World in Data. “Number of lower-middle-income countries” [dataset]. World Bank, “Income Classifications” [original data].",
+      "fullMetadata": "https://api.ourworldindata.org/v1/indicators/961265.metadata.json"
+    },
+    "Number of low-income countries": {
+      "titleShort": "Number of low-income countries",
+      "titleLong": "Number of low-income countries",
+      "descriptionShort": "Number of countries classified as low income by the World Bank.",
+      "descriptionKey": [
+        "The World Bank creates a yearly classification of countries by income, for all countries with population over 30,000.",
+        "This classification stays the same throughout the fiscal year (from July 1 to June 30) even if the income data for a country changes.",
+        "Low-income countries are those with a gross national income (GNI) per capita of $1,145 or less in 2023.",
+        "Lower-middle-income countries are those with a GNI per capita between $1,146 and $4,515 in 2023.",
+        "Upper-middle-income countries are those with a GNI per capita between $4,516 and $14,005 in 2023.",
+        "High-income countries are those with a GNI per capita of more than $14,005 in 2023."
+      ],
+      "descriptionProcessing": "We count the countries in each income group and also calculate the total population in them by using a long-run dataset [mantained by Our World in Data](https://ourworldindata.org/population-sources).",
+      "unit": "",
+      "timespan": "1987-2023",
+      "type": "Integer",
+      "owidVariableId": 961264,
+      "shortName": "classification_low_income_countries_count",
+      "lastUpdated": "2024-07-29",
+      "nextUpdate": "2025-07-29",
+      "citationShort": "World Bank (2024) – with major processing by Our World in Data",
+      "citationLong": "World Bank (2024) – with major processing by Our World in Data. “Number of low-income countries” [dataset]. World Bank, “Income Classifications” [original data].",
+      "fullMetadata": "https://api.ourworldindata.org/v1/indicators/961264.metadata.json"
+    }
+  },
+  "dateDownloaded": "2025-01-21",
+  "activeFilters": {}
+}

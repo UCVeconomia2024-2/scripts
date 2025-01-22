@@ -1,0 +1,50 @@
+Buenas tardes. Ayer hice varias modificaciones, todas menores, en los materiales del curso
+
+Si acceden a la sección Prácticas o a Actividades del site podrán encontrar los materiales modificados
+
+Estas son algunas de las láminas afectadas o incluidas
+-clase 3, 
+-clase 4 láminas, s
+-practicas/apoyo clase 3, 
+-practicas/apoyo clase 4, 
+-practicas/clase 8  versión reporte, 
+-modificaciones clase 5, 
+-clase 8 se corrige error en mean 1 er cuartil y 3 er cuantil, 
+-correccion tarea 8 que dice cuartil y es cuantil 
+
+Realmente no hay nada en esto que afecte el contenido sustantivo de lo que venimos viendo, pero era necesario hacer esas correcciones menores
+Mi recomendación es que cuando tengan un chance, revisen si hay alguno de esos materiales que les falte descargarlo
+
+Todavía faltan algunos por enviar la tarea pendiente de la clase 8. Por favor no se atrasen. 
+Recuerden que en la materia no tenemos parciales y las tareas son una parte significativa de la nota y la
+puntualidad es un elemento importante en la evaluación.
+
+Ya procedí a remitir el enlace a sus correos donde pueden ver sus asignaciones con las observaciones que hago. Si tienen alguna duda u comentario que hacer, me escriben para proceder a responderles.
+Las observaciones en las tareas NO implican de forma directa una disminución o penalidad en la nota obtenida. Muchas son sugerencias, o información complementaria que no quiere decir que hicieron de forma incorrecta el ejercicio, sino más bien es una disertación
+
+La estructura de datos lista no quedó clara según lo que vi en las tareas. Por favor, revisen los materiales 
+
+https://ucveconomiar4ds.netlify.app/clases/clase_07#/estructuras-de-datos-2---repaso
+https://ucveconomiar4ds.netlify.app/clases/clase_07.html?q=list#/relación-data-frames---listas
+https://ucveconomiar4ds.netlify.app/clases/clase_06#/ejemplos-accesos--lista
+https://ucveconomiar4ds.netlify.app/practicas/clase3_apoyo
+https://ucveconomiar4ds.netlify.app/clases/clase_06_v2.html?q=list#/ejemplos-accesos--lista
+https://ucveconomiar4ds.netlify.app/practicas/clase6_v2.html#ejemplos-accesos--lista-1
+
+Si creen que con eso no basta, les hago un video donde nuevamente hablemos de las listas, pero me tienen que informar.
+
+Algunas recomendaciones generales, basadas en las correcciones.
+1. Si van a hacer el render de todo el qmd, no incluyan la función View para ningún objeto ya que no son compatibles
+2. En la barra de herramientas: en Tools/Global Options/Spelling verifiquen que tienen el idioma español configurado. Eso les ayudará a corregir la ortografía en los qmd con un "abc" que aparece dos casillas antes del ícono del render. 
+3. Siempre que trabajen un chunk de código o un script, verifiquen las salidas cuando crean un objeto para que verifiquen que coincide, o tiene la estructura de lo que están tratando de hacer.
+4. Si están trabajando un qmd, es recomendable trabajar en un script en paralelo para que vean las salidas y los procesos. Luego, cuando todo esté listo, le dan forma al qmd y a los chunks de códigos
+5. Al trabajar el render del qmd, es necesario que en el qmd esté definido la carga de todos los objetos, por ejemplo, hacer la lectura del archivo de excel. El qmd cuando se le hace el render tiene su propio environment y lo que no quede definido dentro del propio archivo, no permitirá generarlo y dará un error. Si la variable equis, existe en su espacio de trabajo (environment) pero no queda definida en los chunks que componen el qmd, no será viable hacer el render. Esto es en procura de lograr la reproducibilidad.
+
+
+Mañana avanzaremos a un ritmo más rápido. Ustedes trabajarán con un script, mientras yo les muestro la presentación. Es necesario incrementar la velocidad para cubrir los métodos y conceptos necesarios. Espero que todos puedan seguir el ritmo.
+
+
+¡Hasta mañana!
+
+saludos
+https://github.com/UCVeconomia2024-2/scripts/tree/ec078b03c5b3b90475d0047b7e7bce4cec58db0b/tareas_recibidas/nayuha

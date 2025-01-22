@@ -1,0 +1,260 @@
+Entity,Code,Year,Number of high-income countries,Number of upper-middle-income countries,Number of lower-middle-income countries,Number of low-income countries
+Africa,,1987,0,4,12,32
+Africa,,1988,0,5,13,32
+Africa,,1989,0,4,15,32
+Africa,,1990,1,4,15,33
+Africa,,1991,0,6,13,34
+Africa,,1992,0,7,12,35
+Africa,,1993,0,6,12,36
+Africa,,1994,0,6,9,39
+Africa,,1995,0,6,10,38
+Africa,,1996,0,6,9,39
+Africa,,1997,0,7,9,38
+Africa,,1998,0,6,10,38
+Africa,,1999,0,7,9,38
+Africa,,2000,0,7,9,38
+Africa,,2001,0,6,9,39
+Africa,,2002,0,6,9,39
+Africa,,2003,0,6,9,39
+Africa,,2004,0,8,9,37
+Africa,,2005,0,8,12,34
+Africa,,2006,0,8,12,34
+Africa,,2007,1,7,13,33
+Africa,,2008,1,9,14,30
+Africa,,2009,1,9,15,29
+Africa,,2010,1,10,17,26
+Africa,,2011,1,10,16,27
+Africa,,2012,1,10,16,27
+Africa,,2013,1,10,17,26
+Africa,,2014,2,9,17,26
+Africa,,2015,1,9,17,27
+Africa,,2016,1,8,18,27
+Africa,,2017,1,8,18,27
+Africa,,2018,1,8,21,24
+Africa,,2019,2,6,23,23
+Africa,,2020,1,7,23,23
+Africa,,2021,1,7,22,24
+Africa,,2022,1,7,24,22
+Africa,,2023,1,8,23,22
+Asia,,1987,11,5,8,14
+Asia,,1988,10,5,8,14
+Asia,,1989,10,5,9,14
+Asia,,1990,9,6,11,14
+Asia,,1991,9,5,19,15
+Asia,,1992,9,6,17,16
+Asia,,1993,9,6,16,17
+Asia,,1994,10,5,15,19
+Asia,,1995,11,4,15,19
+Asia,,1996,11,4,16,18
+Asia,,1997,11,6,15,17
+Asia,,1998,10,7,12,20
+Asia,,1999,10,6,12,21
+Asia,,2000,10,7,12,20
+Asia,,2001,12,4,13,21
+Asia,,2002,12,4,14,20
+Asia,,2003,12,4,17,17
+Asia,,2004,13,4,16,17
+Asia,,2005,13,4,16,17
+Asia,,2006,13,5,16,16
+Asia,,2007,14,4,19,13
+Asia,,2008,14,4,20,12
+Asia,,2009,14,6,21,9
+Asia,,2010,14,10,18,8
+Asia,,2011,14,11,17,8
+Asia,,2012,14,12,16,8
+Asia,,2013,14,12,17,7
+Asia,,2014,14,13,19,4
+Asia,,2015,14,13,20,3
+Asia,,2016,14,11,22,3
+Asia,,2017,14,13,17,6
+Asia,,2018,14,15,15,6
+Asia,,2019,14,15,16,5
+Asia,,2020,14,13,19,4
+Asia,,2021,14,12,20,4
+Asia,,2022,14,13,19,4
+Asia,,2023,14,14,18,4
+Europe,,1987,18,8,1,0
+Europe,,1988,19,7,1,0
+Europe,,1989,20,6,2,0
+Europe,,1990,19,9,4,0
+Europe,,1991,20,13,6,0
+Europe,,1992,20,9,15,0
+Europe,,1993,20,9,13,2
+Europe,,1994,22,6,14,2
+Europe,,1995,22,7,13,2
+Europe,,1996,23,8,11,2
+Europe,,1997,24,8,9,3
+Europe,,1998,25,7,11,1
+Europe,,1999,24,8,10,2
+Europe,,2000,26,7,10,2
+Europe,,2001,25,10,8,2
+Europe,,2002,27,8,9,1
+Europe,,2003,27,8,9,1
+Europe,,2004,27,9,8,1
+Europe,,2005,27,10,8,0
+Europe,,2006,29,11,6,0
+Europe,,2007,31,10,5,0
+Europe,,2008,32,11,4,0
+Europe,,2009,35,10,3,0
+Europe,,2010,34,11,3,0
+Europe,,2011,33,10,4,0
+Europe,,2012,35,9,3,0
+Europe,,2013,35,9,3,0
+Europe,,2014,36,8,3,0
+Europe,,2015,36,9,3,0
+Europe,,2016,35,10,3,0
+Europe,,2017,36,9,3,0
+Europe,,2018,36,10,2,0
+Europe,,2019,37,9,2,0
+Europe,,2020,36,11,1,0
+Europe,,2021,37,10,1,0
+Europe,,2022,37,10,1,0
+Europe,,2023,39,9,0,0
+North America,,1987,7,7,13,1
+North America,,1988,7,6,14,1
+North America,,1989,9,4,14,1
+North America,,1990,7,7,13,2
+North America,,1991,6,8,12,3
+North America,,1992,6,9,11,3
+North America,,1993,7,9,11,3
+North America,,1994,9,7,11,3
+North America,,1995,9,7,11,3
+North America,,1996,9,7,11,3
+North America,,1997,9,8,10,3
+North America,,1998,9,9,9,3
+North America,,1999,9,10,9,2
+North America,,2000,10,10,8,2
+North America,,2001,9,11,8,2
+North America,,2002,12,9,7,2
+North America,,2003,10,12,6,2
+North America,,2004,10,12,6,2
+North America,,2005,11,11,7,1
+North America,,2006,13,9,7,1
+North America,,2007,13,11,5,1
+North America,,2008,13,11,5,1
+North America,,2009,13,12,5,1
+North America,,2010,15,12,5,1
+North America,,2011,16,11,5,1
+North America,,2012,17,11,4,1
+North America,,2013,17,11,4,1
+North America,,2014,17,11,4,1
+North America,,2015,18,11,4,1
+North America,,2016,18,11,4,1
+North America,,2017,19,11,3,1
+North America,,2018,19,11,3,1
+North America,,2019,19,11,3,1
+North America,,2020,18,11,5,0
+North America,,2021,19,11,4,0
+North America,,2022,19,12,3,0
+North America,,2023,19,12,3,0
+Oceania,,1987,4,1,6,1
+Oceania,,1988,4,1,7,0
+Oceania,,1989,4,1,6,1
+Oceania,,1990,3,3,6,1
+Oceania,,1991,3,3,8,1
+Oceania,,1992,3,3,10,0
+Oceania,,1993,3,3,10,0
+Oceania,,1994,3,3,10,0
+Oceania,,1995,6,1,9,0
+Oceania,,1996,6,2,9,0
+Oceania,,1997,6,2,9,0
+Oceania,,1998,6,2,8,1
+Oceania,,1999,6,2,8,1
+Oceania,,2000,6,2,8,1
+Oceania,,2001,6,2,7,2
+Oceania,,2002,5,3,7,2
+Oceania,,2003,5,3,7,2
+Oceania,,2004,5,3,7,2
+Oceania,,2005,5,3,7,2
+Oceania,,2006,5,3,7,2
+Oceania,,2007,6,3,6,2
+Oceania,,2008,6,3,8,0
+Oceania,,2009,6,3,8,1
+Oceania,,2010,6,2,10,0
+Oceania,,2011,6,3,9,0
+Oceania,,2012,6,6,6,0
+Oceania,,2013,6,6,6,0
+Oceania,,2014,6,6,6,0
+Oceania,,2015,7,5,7,0
+Oceania,,2016,7,7,5,0
+Oceania,,2017,7,7,5,0
+Oceania,,2018,7,7,5,0
+Oceania,,2019,8,6,5,0
+Oceania,,2020,8,5,6,0
+Oceania,,2021,7,6,6,0
+Oceania,,2022,8,5,6,0
+Oceania,,2023,9,4,6,0
+South America,,1987,0,5,6,1
+South America,,1988,0,4,7,1
+South America,,1989,0,4,7,1
+South America,,1990,0,4,7,1
+South America,,1991,0,5,6,1
+South America,,1992,0,5,6,1
+South America,,1993,0,5,6,1
+South America,,1994,0,4,7,1
+South America,,1995,0,4,7,1
+South America,,1996,0,4,7,1
+South America,,1997,0,5,7,0
+South America,,1998,0,5,7,0
+South America,,1999,0,5,7,0
+South America,,2000,0,5,7,0
+South America,,2001,0,5,7,0
+South America,,2002,0,4,8,0
+South America,,2003,0,4,8,0
+South America,,2004,0,4,8,0
+South America,,2005,0,4,8,0
+South America,,2006,0,5,7,0
+South America,,2007,0,6,6,0
+South America,,2008,0,8,4,0
+South America,,2009,0,8,4,0
+South America,,2010,0,9,3,0
+South America,,2011,0,9,3,0
+South America,,2012,2,7,3,0
+South America,,2013,2,7,3,0
+South America,,2014,4,6,2,0
+South America,,2015,2,9,1,0
+South America,,2016,2,9,1,0
+South America,,2017,3,8,1,0
+South America,,2018,2,9,1,0
+South America,,2019,2,9,1,0
+South America,,2020,2,8,1,0
+South America,,2021,2,8,1,0
+South America,,2022,3,7,1,0
+South America,,2023,3,7,1,0
+World,OWID_WRL,1987,40,30,46,49
+World,OWID_WRL,1988,40,28,50,48
+World,OWID_WRL,1989,43,24,53,49
+World,OWID_WRL,1990,39,33,56,51
+World,OWID_WRL,1991,38,40,64,54
+World,OWID_WRL,1992,38,39,71,55
+World,OWID_WRL,1993,39,38,68,59
+World,OWID_WRL,1994,44,31,66,64
+World,OWID_WRL,1995,48,29,65,63
+World,OWID_WRL,1996,49,31,63,63
+World,OWID_WRL,1997,50,36,59,61
+World,OWID_WRL,1998,50,36,57,63
+World,OWID_WRL,1999,49,38,55,64
+World,OWID_WRL,2000,52,38,54,63
+World,OWID_WRL,2001,52,38,52,66
+World,OWID_WRL,2002,56,34,54,64
+World,OWID_WRL,2003,54,37,56,61
+World,OWID_WRL,2004,55,40,54,59
+World,OWID_WRL,2005,56,40,58,54
+World,OWID_WRL,2006,60,41,55,53
+World,OWID_WRL,2007,65,41,54,49
+World,OWID_WRL,2008,66,46,55,43
+World,OWID_WRL,2009,69,48,56,40
+World,OWID_WRL,2010,70,54,56,35
+World,OWID_WRL,2011,70,54,54,36
+World,OWID_WRL,2012,75,55,48,36
+World,OWID_WRL,2013,75,55,50,34
+World,OWID_WRL,2014,79,53,51,31
+World,OWID_WRL,2015,78,56,52,31
+World,OWID_WRL,2016,77,56,53,31
+World,OWID_WRL,2017,80,56,47,34
+World,OWID_WRL,2018,79,60,47,31
+World,OWID_WRL,2019,82,56,50,29
+World,OWID_WRL,2020,79,55,55,27
+World,OWID_WRL,2021,80,54,54,28
+World,OWID_WRL,2022,82,54,54,26
+World,OWID_WRL,2023,85,54,51,26
