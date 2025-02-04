@@ -1,0 +1,23 @@
+---
+title: "test_variables"
+format: html
+editor: visual
+---
+
+## Quarto
+
+```{r}
+#| echo: true
+#| eval: true
+
+library(ggplot2)
+maria=25
+alberto=23 
+
+box_speed <- ggplot(data=(cars), aes(x=speed))+
+    geom_boxplot()
+
+print(maria)
+print(alberto)
+print(box_speed)
+```

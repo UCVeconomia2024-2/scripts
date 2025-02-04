@@ -1,0 +1,18 @@
+---
+title: "test latex"
+format: html
+editor: visual
+bibliography: references.bib
+---
+
+## Ejemplo Latex
+
+$[ ax^2 + bx + c = 0 ]$ donde ( a ), ( b ), y ( c ) son constantes, con $( a \neq 0 )$.
+
+La solución para ( x ) se puede encontrar utilizando la fórmula cuadrática: $[ x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a} ]$
+
+Donde: $- ( a )$ es el coeficiente de $( x^2 )$, $- ( b )$ es el coeficiente de $( x )$, $- ( c )$ es el término constante, $- ( \pm )$ indica que hay dos soluciones posibles (una con suma y otra con resta).
+
+### Recurso en línea para crear latex
+
+<https://es.overleaf.com>
