@@ -4,20 +4,20 @@ format: html
 editor: visual
 ---
 
-## Quarto
+## Quarto y Variables definidas en Global Environment Vs Environment Documento
 
 ```{r}
 #| echo: true
 #| eval: true
 
 library(ggplot2)
-maria=25
-alberto=23 
+#maria=25
+#alberto=23 
 
-box_speed <- ggplot(data=(cars), aes(x=speed))+
+# box_speed <- ggplot(data=(cars), aes(x=speed))+
     geom_boxplot()
 
 print(maria)
 print(alberto)
-print(box_speed)
+box_speed
 ```
