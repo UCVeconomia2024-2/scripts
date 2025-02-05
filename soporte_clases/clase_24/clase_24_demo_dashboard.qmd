@@ -1,0 +1,151 @@
+---
+title: "Demo R4DS UCV- Economía"
+format: dashboard
+lang: es
+embed-resources: true
+theme: litera
+---
+# Info mtcars
+## Row {height="20%"}
+
+```{r}
+#| content: valuebox
+#| title: "suma mpg"
+list(
+  icon = "trash",
+  color = "blue",
+  value = sum(mtcars$mpg)
+)
+```
+```{r}
+#| content: valuebox
+#| title: "suma cyl"
+list(
+  icon = "check",
+  color = "#6a994e",
+  value = sum(mtcars$cyl)
+)
+```
+
+```{r}
+#| content: valuebox
+#| title: "suma wt"
+list(
+  icon = "tag",
+  color = "danger",
+  value = sum(mtcars$wt)
+)
+```
+
+```{r}
+#| content: valuebox
+#| title: "suma disp"
+list(
+  icon = "house",
+  color = "orange",
+  value = sum(mtcars$disp)
+)
+```
+
+## Row {height="40%"}
+
+```{r}
+library(tidyverse)
+library(DT)
+datatable(mtcars)
+
+```
+
+## Row {height="40%"}
+### Column {width=50%}
+### Row {.tabset}
+
+```{r}
+#| title: grafico 1
+
+library(plotly)
+
+grafico1 <- ggplot(data=mtcars,
+       aes(x=mpg, y=hp))+
+  geom_point(color='orange')+
+  geom_smooth()
+
+ggplotly(grafico1)
+  
+```
+
+```{r}
+#| title: grafico 1 duplicado
+
+library(plotly)
+
+grafico1_1 <- ggplot(data=mtcars,
+       aes(x=hp, y=mpg))+
+  geom_point(color='orange')+
+  geom_smooth()
+
+ggplotly(grafico1_1)
+  
+```
+
+### Column {width=25%}
+```{r}
+grafico2 <- ggplot(data=mtcars, 
+                   aes(wt))+
+  geom_boxplot()+
+  facet_wrap(~cyl)
+
+ggplotly(grafico2)
+```
+
+### Column {width=25%}
+
+```{r}
+grafico3 <- ggplot(data=mtcars, 
+                   aes(x= disp,
+                        y= carb))+
+  geom_point()
+ggplotly(grafico3)
+```
+
+# info Gapminder
+```{r}
+#| title: "demo gapminder 1"
+library(gapminder)
+gap_2007 <- gapminder%>%
+  filter(year==2007)%>%
+  arrange(country)
+
+df_gapminder_2007_america <- gap_2007%>%
+  filter(continent=='Americas')
+
+gapminder_2007 <- gapminder%>%
+  filter(year==2007)%>%
+  arrange(country)
+gap_gr1 <- gapminder_2007%>%
+  group_by(continent)%>%
+  count(sort = TRUE, name='Total')%>%
+  ggplot() +
+  geom_col(aes(x=reorder(continent,-Total),
+               y= Total),
+           fill= "#ffbe0b")
+
+ggplotly(gap_gr1)
+```
+
+```{r}
+#| title: "demo gapminder 2"
+gap_gr2 <- ggplot(data = gapminder_2007) +
+  geom_point(mapping = aes(x = lifeExp,
+                           y = gdpPercap,
+                           size=pop,
+                           shape= continent,
+  ),
+  color= '#386641',
+  alpha=.8)+
+  theme_bw()
+
+ggplotly(gap_gr2)
+```
+
+
